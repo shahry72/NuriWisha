@@ -1,0 +1,36 @@
+body {
+		direction:rtl;
+		background-color: hsla(305, 46%, 86%, 0.116);
+		line-height:1.5em;
+		font-size: 1.5rem;
+		font-family: 'Amiri';font-size: 22px;
+		padding:2px 2px;
+		min-height: 50vh;
+		text-align: right;
+		width: 60%;
+		
+	 	}		
+		
+a{
+	text-decoration: none;
+}
+ol {list-style: arabic-indic;
+}
+li{ list-style-type:arabic-indic;}
+
+
+footer {
+	background-color: hsla(305, 46%, 86%, 0.116);
+	line-height:1.5em;
+	font-size: 1.5rem;
+	padding:2px 2px;
+	min-height: 50vh;
+	text-align: center;
+	width: 100%;
+	
+	 }	
+#head{
+	color: rgb(42, 54, 165);
+	text-align: right;
+	font-weight: 400;
+}
