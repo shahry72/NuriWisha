@@ -5,6 +5,7 @@ p {
 		color:rgb(8, 8, 8);
 		text-size-adjust: auto;
 		text-align: center;	
+		cursor:zoom-in;
 		}
 p a {
 		visibility: hidden;
@@ -36,7 +37,6 @@ body {
 		padding:2px 2px;
 		min-height: 50vh;
 		text-align: right;
-		width: 60%;
 	 	}		
 		
 
