@@ -6,6 +6,7 @@ p {
 		text-size-adjust: auto;
 		text-align: center;	
 		cursor:zoom-in;
+
 		}
 p a {
 		visibility: hidden;
@@ -22,8 +23,9 @@ p a {
 		position: absolute;
 		border-radius: 20%;
 		z-index: auto;
-		top: 35px;
+		top: -45px;
 		right: 35%;
+		
 		}
 p:hover a {
 		visibility: visible;
@@ -33,11 +35,15 @@ body {
 		background-color: hsla(305, 46%, 86%, 0.116);
 		line-height:1.5em;
 		font-size: 1.5rem;
-		font-family: 'Amiri';font-size: 22px;
+		font-family: 'Amiri';
+		font-size: 22px;
 		padding:2px 2px;
 		min-height: 50vh;
 		text-align: right;
-		width:100%;
+		
+		text-align-last: center;
+		width: 100%;
+
 	 	}		
 		
 
