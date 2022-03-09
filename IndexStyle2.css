@@ -1,0 +1,74 @@
+header{
+	background-color: brown;
+	padding: 5px;
+}
+h1{
+	color: aliceblue;
+}
+header .UpNav{
+	color:rgb(245, 11, 30);
+	background-color: rgb(237, 240, 89);
+}
+header .UpNav:hover{
+	color:rgb(245, 11, 30);
+	background-color: rgb(173, 248, 112);
+}
+body {
+    background-color: bisque;
+	direction:rtl;
+	line-height:1.5em;
+	font-size: 1.5rem;
+	font-family: 'Amiri';font-size: 22px;
+	padding:2px 2px;
+	min-height: 50vh;
+	text-align: right;
+	width: 100%;
+   }	
+    body .st{
+        padding: 2px;
+        float :right;
+        width: 23%;
+    }
+    body .nd{
+        padding: 2px;
+        float :right;
+        width: 23%;
+
+        }
+   body .rd{
+        padding: 2px;
+        float :right;
+        width: 23%;
+
+        }
+    body .th{
+        padding: 2px;
+        float :right;
+        width: 23%;
+
+        }
+a{
+text-decoration: none;
+}
+ol {list-style: arabic-indic;
+}
+li{ list-style-type:arabic-indic;}
+
+li .nf{
+color: rgb(158, 113, 14);
+}
+li .ff{
+color: rgb(22, 177, 55);
+}
+
+
+footer {
+background-color: hsla(305, 46%, 86%, 0.116);
+line-height:1.5em;
+font-size: 1.5rem;
+padding:2px 2px;
+min-height: 50vh;
+text-align: center;
+width: 100%;
+
+ }	
