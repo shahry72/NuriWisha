@@ -1,0 +1,80 @@
+	
+p {
+	position: relative;
+	display: inline-block;
+	color:rgb(8, 8, 8);
+	text-size-adjust: auto;
+	text-align: center;	
+	cursor:zoom-in;
+
+	}
+p a {
+	visibility: hidden;
+	display:inline-block;
+	background-color:rgb(150, 25, 77);
+	color: #fcf8f5ee;
+	width:max-content;
+	font-size: 16px;
+	font-family: 'Times New Roman', Times, serif;
+	align-content: center;
+	padding: 3px;
+	
+	/* Position the tooltip */
+	position: absolute;
+	border-radius: 20%;
+	z-index: auto;
+	top: -45px;
+	right: 35%;
+	
+	}
+p:hover a {
+	visibility: visible;
+	}
+body {
+	direction:rtl;
+	background-color: hsla(305, 46%, 86%, 0.116);
+	line-height:1.5em;
+	font-size: 1.5rem;
+	font-family: 'Amiri';
+	font-size: 22px;
+	padding:2px 2px;
+	min-height: 50vh;
+	text-align: right;
+	
+	text-align-last: center;
+	width: 100%;
+
+	 }		
+	
+
+	
+body a{
+	font-family: 'Times New Roman', Times, serif;		}
+body p{
+	direction: rtl;
+
+}
+p:hover{
+color:rgb(150, 25, 77);
+}
+nm{
+color: #d66f0f;
+}
+header{
+	 font-family: 'Times New Roman', Times, serif;
+ }
+footer{
+	 font-family: 'Times New Roman', Times, serif;
+	 text-align: center;
+
+ }
+a{
+	text-decoration: none;
+}
+h4{
+color: brown;
+text-align: center;
+line-height:2.5em;
+font-size: 2 rem;
+font-family: 'Amiri';font-size: 22px;
+}
