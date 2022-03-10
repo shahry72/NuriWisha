@@ -1,4 +1,10 @@
-	
+header{
+	color:rgb(238, 255, 0);
+	background-color: rgb(11, 122, 35);
+	font-family: 'Times New Roman', Times, serif;
+
+}	
+
 p {
 		position: relative;
 		display: inline-block;
@@ -11,7 +17,7 @@ p {
 p a {
 		visibility: hidden;
 		display:inline-block;
-		background-color:rgb(150, 25, 77);
+		background-color:rgb(15, 112, 20);
 		color: #fcf8f5ee;
 		width:max-content;
 		font-size: 16px;
@@ -32,15 +38,14 @@ p:hover a {
 		}
 body {
 		direction:rtl;
-		background-color: hsla(305, 46%, 86%, 0.116);
+		background-color: bisque;
 		line-height:1.5em;
 		font-size: 1.5rem;
 		font-family: 'Amiri';
 		font-size: 22px;
-		padding:2px 2px;
+		font-weight: bold;
 		min-height: 50vh;
 		text-align: right;
-		
 		text-align-last: center;
 		width: 100%;
 
@@ -60,17 +65,14 @@ p:hover{
 nm{
  color: #d66f0f;
  }
-header{
-		 font-family: 'Times New Roman', Times, serif;
-	 }
-footer{
-		 font-family: 'Times New Roman', Times, serif;
-		 text-align: center;
-	
-	 }
+
+
 a{
 		text-decoration: none;
 	}
+address{
+	color: aliceblue;
+}
 h4{
 	color: brown;
 	text-align: center;
@@ -78,3 +80,10 @@ h4{
 	font-size: 2 rem;
 	font-family: 'Amiri';font-size: 22px;
 }
+footer{
+	color:rgb(238, 255, 0);
+	background-color:rgb(11, 122, 35);
+	padding: 15px;
+	font-family: 'Times New Roman', Times, serif;
+	text-align: center;
+	 }
