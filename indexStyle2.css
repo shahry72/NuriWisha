@@ -1,0 +1,90 @@
+header{
+	background-color: rgb(165, 42, 42);
+	padding: 15px;
+    }
+h1{
+	color: aliceblue;
+    text-align: center;
+}
+h2{
+    color:rgb(11, 11, 12);
+    text-align: center;
+}
+header .UpNav{
+	color:rgb(245, 11, 30);
+	background-color: rgb(185, 100, 105);
+    text-align: center;
+}
+header .UpNav a{ color:yellow;
+}
+header .UpNav:hover{
+	color:rgb(245, 11, 30);
+	background-color: rgb(3, 3, 3);
+}
+header .pic{
+    float:left;
+    width: 50%;
+}
+header .pic{
+    float: left;
+    width: fit-50%;
+}
+body {
+    background-color: bisque;
+	direction:rtl;
+	line-height:1.5em;
+	font-size: 1.5rem;
+	font-family: 'Amiri';
+    font-size: 22px;
+	padding:2px 2px;
+	min-height: 50vh;
+	text-align: right;
+    clear: both;
+   }	
+    body .st{
+        padding: 2px;
+        float :right;
+        width: 23%;
+    }
+    body .nd{
+        padding: 2px;
+        float :right;
+        width: 23%;
+
+        }
+   body .rd{
+        padding: 2px;
+        float :right;
+        width: 23%;
+
+        }
+    body .th{
+        padding: 2px;
+        float :right;
+        width: 23%;
+
+        }
+a{
+text-decoration: solid;
+}
+ol {list-style: arabic-indic;
+}
+li{ list-style-type:arabic-indic;}
+
+li .nf{
+color: rgb(158, 113, 14);
+}
+li .ff{
+color: rgb(22, 177, 55);
+}
+footer{
+    color: yellow;
+    background-color: brown;
+    text-align: center;
+    clear: both;
+	padding: 10px;
+}
+footer a{color: rgb(0, 255, 106);}
+.pic{
+    align-items: stretch;
+}
