@@ -42,7 +42,7 @@ body {
 		width: 100%;
 	}		
 		
-
+body li {list-style-type:arabic-indic;}
 		
 body a{font-family: 'Times New Roman', Times, serif;}
 body p{	direction: rtl;	}
