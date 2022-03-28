@@ -23,7 +23,7 @@ p 	{	position: relative;
 			position: absolute;
 			border-radius: 20%;
 			z-index: auto;
-			top: -65px;
+			top: -75px;
 			right: 35%;}
 
 p:hover a {visibility: visible;}
