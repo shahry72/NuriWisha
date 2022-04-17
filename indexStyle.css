@@ -66,6 +66,10 @@ color: rgb(158, 113, 14);
 li .ff{
 color: rgb(22, 177, 55);
 }
+
+li .pcf{
+    color: rgb(95, 63, 223);
+}
 footer{
     color: yellow;
     background-color: brown;
