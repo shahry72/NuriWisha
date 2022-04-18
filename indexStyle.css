@@ -78,3 +78,6 @@ footer{
 	padding: 10px;
 }
 footer a{color: rgb(0, 255, 106);}
+.pic{
+    align-items: stretch;
+}
