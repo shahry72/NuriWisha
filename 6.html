@@ -6,13 +6,16 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title> سورة الأَنعَام</title>
 <link href='https://fonts.googleapis.com/css?family=Amiri' rel='stylesheet'>
-<link rel="stylesheet" href="q-style.css">
+<link id="pagestyle" rel="stylesheet" type="text/css" href="q-style.css">
+<script>
+function swapStyleSheet(sheet){
+    document.getElementById('pagestyle').setAttribute('href', sheet);
+}
+</script>
 </head>
 <header>
-		بۆ زانینی مانای وشەیەك پەنجە بنێ سەری<br>
-	<hr>
-	</center>
-</header>
+		بۆ زانینی مانای وشەیەك پەنجە بنێ سەری<hr>
+	</header>
 <body>
     <p><center>
         <p>سُورَةُ الأَنعَامِ</p><br>
@@ -33,8 +36,8 @@
 <p>برَبِّهِم<a>بەپەروەردیگاریان</a></p>
 <p>يَعۡدِلُونَ<a>هاوتای بۆ دادەنێن</a></p>
 <nm>(١)</nm>
-<p>هُوَ<a>ئەو</a></p>
-<p>ٱلَّذِي<a>ئەوەیە</a></p>
+<p>هُوَ<a>ئەوە</a></p>
+<p>ٱلَّذِي<a>ئەوەی</a></p>
 <p>خَلَقَكُم<a>ئێوەی دروستکردوە</a></p>
 <p>مِّن<a>لە</a></p>
 <p>طِينٖ<a>قوڕێک</a></p>
@@ -3101,17 +3104,14 @@
 <p>رَّحِيمُۢ<a>ئەوپەڕی بەبەزەییە</a></p>
 <nm>(١٦٥)</nm>
 <br>
-<a href="https://quranenc.com/ku/browse/kurdish_salahuddin/6">بۆ تەفسیری سورەتەکەش کلیکی  ئەمە بکە</a>
+<a href="https://quranenc.com/ku/browse/kurdish_salahuddin/6"><hr>لێکدانەوە و تەفسیری ئایەتەکان</a>
 </body>
-<footer>
-    <hr>
-    <address>ئەگەر بتەوێ هەموو ماناكان دەركەوێت کلیکی  <a href="s6.html">ئێرە </a> بكە.<br> 
-   بۆ پەیوەندی و تێبینی فەرموو بۆ: <a href="https://www.facebook.com/groups/1068942280593023">سێبەری نوور</a><br>
-    یان پەیوەندی بکە بە:<a href="mailto:hadith4kurd@gmail.com">hadith4kurd@gmail.com</a><br>
-</footer>
-    
 <Return>
 <hr>
-<a href="index.html">گەڕانەوە بۆ پێڕست</a>
-</Return> 
+<a href="index.html">گەڕانەوە بۆ پێڕست</a><hr>
+  <button id="stand" onclick="swapStyleSheet('q-style.css')">دەقی قورئان</button>
+  <button id="mean" onclick="swapStyleSheet('sq-style.css')">قورئان و ماناکان</button>
+  </a>
+</Return>
+<footer><address></address></footer> 
 </html>

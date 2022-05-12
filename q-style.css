@@ -1,15 +1,18 @@
 header{
-	color:rgb(238, 255, 0);
+	color:rgb(241, 242, 233);
 	background-color: rgb(11, 122, 35);
-	font-family: 'Times New Roman', Times, serif;}	
+	/* font-family: 'Times New Roman', Times, serif; */
+}
+
 p 	{	position: relative;
 		display: inline-block;
 		color:rgb(8, 8, 8);
 		text-size-adjust: auto;
 		text-align: center;	
-		cursor:zoom-in;}
+		cursor:zoom-in;
+	}
 
-	p a {	visibility: hidden;
+	p a {	
 			display:inline-block;
 			background-color:rgb(15, 112, 20);
 			color: #fcf8f5ee;
@@ -18,63 +21,65 @@ p 	{	position: relative;
 			font-family: 'Times New Roman', Times, serif;
 			align-content: center;
 			padding: 3px;
-			
-			/* Position the tooltip */
+            
+            /* Position the tooltip */
+			visibility: hidden;
 			position: absolute;
 			border-radius: 20%;
 			z-index: auto;
-			top: -65px;
-			right: 35%;}
+			top: -55px;
+			right: 35%;		
+		}
 
 p:hover a {visibility: visible;}
-
 body {
 		direction:rtl;
 		background-color: bisque;
-		line-height:1.5em;
+		/* line-height:1.5em; */
 		font-size: 1.5rem;
 		font-family: 'Amiri';
-		font-size: 22px;
 		font-weight: bold;
-		min-height: 50vh;
+		/* min-height: 50vh; */
 		text-align: right;
 		text-align-last: center;
-		width: 100%;
-	}		
-		
+		/* width: 100%; */
+	}
+			
 body li {list-style-type:arabic-indic;}
 		
-body a{font-family: 'Times New Roman', Times, serif;}
+
 body p{	direction: rtl;	}
 p:hover{color:rgb(150, 25, 77); }
-nm{ color: #d66f0f; }
 
-h4{
-	color: brown;
+nm{ color: #a09e9d; }
+
+h3{
+	color: rgb(36, 130, 181);
 	text-align: center;
-	line-height:2.5em;
+	line-height:1.25em;
 	font-size: 2 rem;
 	font-family: 'Amiri';
 	font-size: 22px;
 }
-footer{
-	background-color:rgb(11, 122, 35);
+
+
+
+#stand {
+	visibility: hidden;
+}
+
+return button{
+	color: #eaf0ec;
+	background-color: rgb(11, 122, 35);
+	font-size:15px;
 	padding: 5px;
-	font-family: 'Times New Roman', Times, serif;
-	text-align: center;
-
-	}
-footer a{color: rgb(0, 255, 106);}
-
-address{color:yellow;}
-a{
-	text-decoration: solid;
+	border-radius: 40%;
 }
 return a{
-	color: #eaf0ec;
+	color: rgb(255, 255, 255);
 	background-color: rgb(165, 42, 42);;
-	text-decoration: solid;
-	font-size:25px;
-	padding: 20px;
+	text-decoration: none;
+	font-size:15px;
+	padding: 11px;
 	border-radius: 40%;
 }

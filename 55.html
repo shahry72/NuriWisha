@@ -8,11 +8,16 @@
  <title>سورة الرَّحْمَـٰن</title>
 <link href='https://fonts.googleapis.com/css?family=Amiri' rel='stylesheet'>
 </head>
-<link rel="stylesheet" href="q-style.css">
+<link id="pagestyle" rel="stylesheet" type="text/css" href="q-style.css">
+<script>
+function swapStyleSheet(sheet){
+    document.getElementById('pagestyle').setAttribute('href', sheet);
+}
+</script>
 </head>
 <header>
 		بۆ زانینی مانای وشەیەک پەنجە بنێ سەری<br>
-  </header>
+</header>
 <body>
     <hr><center>سورة الرَّحمن</center>
     <p>الرَّحْمَـٰنُ<a>خودای میهرەبان</a></p>
@@ -445,16 +450,11 @@
     <nm>(٧٨)</nm>
         
 </body>
-</html>
-<hr>
-<footer>
-	<address>ئەگەر بتەوێ هەموو ماناکان دەرکەوێت کلیکی   <a href="s55.html"> سورة الرَّحمن</a> بکە.<br> 
-	بۆ پەیوەندی و تێبینی فەرموو بۆ:<br>
-  <a href="https://www.facebook.com/groups/1068942280593023">سێبەری نوور</a><br></address>
-</footer>
-  <Return>
-    <hr>
-    <a href="index.html">گەڕانەوە بۆ پێڕست</a>
-    </a>
+<Return>
+  <hr>
+  <a href="index.html">گەڕانەوە بۆ پێڕست</a><hr>
+  <button id="stand" onclick="swapStyleSheet('q-style.css')">دەقی قورئان</button>
+  <button id="mean" onclick="swapStyleSheet('sq-style.css')">قورئان و ماناکان</button>
 </Return>
+<footer><address></address></footer>
 </html>

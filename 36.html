@@ -7,13 +7,18 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title> سورة یاسین</title>
 <link href='https://fonts.googleapis.com/css?family=Amiri' rel='stylesheet'>
-<link rel="stylesheet" href="q-style.css">
+<link id="pagestyle" rel="stylesheet" type="text/css" href="q-style.css">
+<script>
+function swapStyleSheet(sheet){
+    document.getElementById('pagestyle').setAttribute('href', sheet);
+}
+</script>
 </head>
 <header>
-		بۆ زانینی مانای وشەیەك پەنجە بنێ سەری<br></center>
-  </header>
+		بۆ زانینی مانای وشەیەك پەنجە بنێ سەری</center>
+</header>
 <body>
-    <hr><center>سورة یس</center> <center><p> بِسْمِ <a> بەناوی</a><p><p> اللَّـهِ <a>خودا</a><p><p> الرَّحْمَـٰنِ <a>ئەوپەڕی میهرەبانی</a><p><p> الرَّحِيمِ <a>ئەوپەڕی بەخشندە</a><p></center>
+    <hr><center>سورة یس</center> <h3><p> بِسْمِ <a> بەناوی</a><p><p> اللَّـهِ <a>خودا</a><p><p> الرَّحْمَـٰنِ <a>ئەوپەڕی میهرەبانی</a><p><p> الرَّحِيمِ <a>ئەوپەڕی بەخشندە</a></p></h3>
         <p>يس<a>یا سیین</a></p>
         <nm>(١)</nm>
         <p>وَ<a>سوێند بە</a></p>
@@ -755,17 +760,13 @@
         <p>وَإِلَيْهِ<a>وە هەربۆ ئەویش</a></p>
         <p>تُرْجَعُونَ<a>دەگێردرێنەوە</a></p>
         <nm>(٨٣)</nm>
-        <br><a href="https://quranenc.com/ku/browse/kurdish_salahuddin/36">بۆ تەفسیری سورەتەکەش کلیکی  ئەمە بکە</a>
+        <br><a href="https://quranenc.com/ku/browse/kurdish_salahuddin/36"><hr>لێکدانەوە و تەفسیری ئایەتەکان</a>
 </body>
-<hr>
-<footer>
-	<address>ئەگەر بتەوێ هەموو ماناكان دەركەوێت کلیکی   <a href="s36.html"> سورة یاسین</a> بكە.<br> 
-	بۆ پەیوەندی و تێبینی فەرموو بۆ: 
-  <a href="https://www.facebook.com/groups/1068942280593023">سێبەری نوور</a><br></address>
-</footer>
-  <Return>
-    <hr>
-    <a href="index.html">گەڕانەوە بۆ پێڕست</a>
-    </a>
+<Return>
+  <hr>
+  <a href="index.html">گەڕانەوە بۆ پێڕست</a><hr>
+  <button id="stand" onclick="swapStyleSheet('q-style.css')">دەقی قورئان</button>
+  <button id="mean" onclick="swapStyleSheet('sq-style.css')">قورئان و ماناکان</button>
 </Return>
+<footer><address></address></footer>
 </html>

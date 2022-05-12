@@ -7,17 +7,21 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title>سورة المعارج </title>
 <link href='https://fonts.googleapis.com/css?family=Amiri' rel='stylesheet'>
-<link rel="stylesheet" href="q-style.css">
+<link id="pagestyle" rel="stylesheet" type="text/css" href="q-style.css">
+<script>
+function swapStyleSheet(sheet){
+    document.getElementById('pagestyle').setAttribute('href', sheet);
+}
+</script>
 </head>
 <header>
 		بۆ زانینی مانای وشەیەك پەنجە بنێ سەری<br>
 		<hr>
-	</center>
-</header>
+	</header>
 <body>
     
 <center>سورة المعارج </center>
-<center><p>بسم <a> بەناوی</a></p><p>الله<a>خودا</a></p><p>الرحمن<a>ئەوپەڕی میهرەبانی</a></p><p>الرحیم<a>ئەوپەڕی بەخشندە</a></p></center><br>
+<h3><p>بسم <a> بەناوی</a></p><p>الله<a>خودا</a></p><p>الرحمن<a>ئەوپەڕی میهرەبانی</a></p><p>الرحیم<a>ئەوپەڕی بەخشندە</a></p></h3>
 <p>سَأَلَ<a> -</a></p>
 <p>سَائِلٌ<a>داواكار و پرسیاركەرێك -داوا وپرسیاری كرد</a></p>
 <p>بِعَذَابٍ<a>بۆ عەزاب وئەشكەنجەیەك (كە)</a></p>
@@ -165,8 +169,8 @@
 <p>إِلَّا<a>تەنها</a></p>
 <p>عَلَىٰ<a>بۆسەر</a></p>
 <p>أَزْوَاجِهِمْ<a>خێزنەكانیان</a></p>
-<p>أَوْ<a>یان (</a></p>
-<p>مَا مَلَكَتْ أَيْمَانُهُمْ<a>) كەنیزەك جاریەكانیان (نەبێ)</a></p>
+<p>أَوْ<a>یان </a></p>
+<p>مَا مَلَكَتْ أَيْمَانُهُمْ<a> كەنیزەك جاریەكانیان (نەبێ)</a></p>
 <p>فَإِنَّهُمْ<a>ئەوە ئەوان</a></p>
 <p>غَيْرُ<a> -</a></p>
 <p>مَلُومِينَ<a>سەرزەنشتكراو ولۆمەكراو -نین</a></p>
@@ -263,23 +267,21 @@
 <nm>(٤٣)</nm>
 <p>خَاشِعَةً<a> -</a></p>
 <p>أَبْصَارُهُمْ<a>(لە حاڵێك كە) بینایی وچاوەكانیان -شۆڕكردووە وداماو بووە</a></p>
-<p>تَرْهَقُهُمْ ذِلَّةٌۚ<a>زەلیلی و ڕیسواییەك (بەلام چ ڕیسواییەك) -دایگرتوون وماندووی كردوون</a></p>
+<p>تَرْهَقُهُمْ<a>دایگرتوون وماندووی كردوون</a></p>
+<p>ذِلَّةٌۚ<a>زەلیلی و ڕیسواییەك (بەلام چ ڕیسواییەك)</a></p>
 <p>ذَٰلِكَ<a>ئا ئەوە</a></p>
 <p>الْيَوْمُ<a>ئەو ڕۆژەیە</a></p>
 <p>الَّذِي<a>ئەوەی</a></p>
 <p>كَانُوا يُوعَدُونَ<a>بەڵێنیان پێدەدرا</a></p>
 <nm>(٤٤)</nm>
-<center><a href="https://quranenc.com/ku/browse/kurdish_salahuddin/70">بۆ تەفسیری سورەتەکەش کلیکی  ئەم سایتە بکە</a></center>
+<center><a href="https://quranenc.com/ku/browse/kurdish_salahuddin/70"><hr>لێکدانەوە و تەفسیری ئایەتەکان</a></center>
 </body>
-<footer>
-	<hr>
-	<address>ئەگەر بتەوێ هەموو ماناكان دەركەوێت کلیکی  <a href="s70.html">جوزئی تبارك</a> بكە.<br> 
-	بۆ پەیوەندی و تێبینی فەرموو بۆ: 
- <a href="https://www.facebook.com/groups/1068942280593023">سێبەری نوور</a><br></address>
-</footer>
- <Return>
+<Return>
     <hr>
-    <a href="index.html">گەڕانەوە بۆ پێڕست</a>
-    </a>
-</Return>
+    <a href="index.html">گەڕانەوە بۆ پێڕست</a><hr>
+  <button id="stand" onclick="swapStyleSheet('q-style.css')">دەقی قورئان</button>
+  <button id="mean" onclick="swapStyleSheet('sq-style.css')">قورئان و ماناکان</button>
+  </Return>
+<footer><address></address></footer>
+ 
 </html>

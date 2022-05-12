@@ -6,15 +6,18 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title> سورة الْجُمُعَةِ</title>
 <link href='https://fonts.googleapis.com/css?family=Amiri' rel='stylesheet'>
-<link rel="stylesheet" href="q-style.css">
+<link id="pagestyle" rel="stylesheet" type="text/css" href="q-style.css">
+<script>
+function swapStyleSheet(sheet){
+    document.getElementById('pagestyle').setAttribute('href', sheet);
+}
+</script>
 </head>
 <header>
-		بۆ زانینی مانای وشەیەك پەنجە بنێ سەری<br>
-	<hr>
-	</center>
-</header>
+		بۆ زانینی مانای وشەیەك پەنجە بنێ سەری<hr>
+	</header>
 <body>
-<hr><center>سورة الْجُمُعَةِ</center><center><p> بِسْمِ <a> بەناوی</a><p><p> اللَّـهِ <a>خودا</a><p><p> الرَّحْمَـٰنِ <a>ئەوپەڕی میهرەبانی</a><p><p> الرَّحِيمِ <a>ئەوپەڕی بەخشندە</a><p></center>
+<hr><center>سورة الْجُمُعَةِ</center><h3><p> بِسْمِ <a> بەناوی</a><p><p> اللَّـهِ <a>خودا</a><p><p> الرَّحْمَـٰنِ <a>ئەوپەڕی میهرەبانی</a><p><p> الرَّحِيمِ <a>ئەوپەڕی بەخشندە</a></p></h3>
 <p>يُسَبِّحُ<a>تەسبیحات دەکات</a></p>
 <p>لِلَّـهِ<a>بۆ خودا</a></p>
 <p>مَا<a>هەرچی</a></p>
@@ -184,18 +187,13 @@
 <p>خَيْرُ<a>چاکترینی</a></p>
 <p>الرَّازِقِينَ<a>ڕزق و ڕۆزی دەرەکانە</a></p>
 <nm>(١١)</nm>
-<br><a href="https://quranenc.com/ku/browse/kurdish_salahuddin/62">بۆ تەفسیری سورەتەکەش کلیکی  ئەمە بکە</a>
+<br><a href="https://quranenc.com/ku/browse/kurdish_salahuddin/62"><hr>لێکدانەوە و تەفسیری ئایەتەکان</a>
 </body>
-<hr>
-<footer>
-	<address>ئەگەر بتەوێ هەموو ماناکان دەرکەوێت کلیکی   <a href="s62.html"> سورة الْجُمُعَةِ</a> بکە.<br> 
-	بۆ پەیوەندی و تێبینی فەرموو بۆ:<br>
-  <a href="https://www.facebook.com/groups/1068942280593023">سێبەری نوور</a><br></address>
-</footer>
-</html>
 <Return>
-    <hr>
-    <a href="index.html">گەڕانەوە بۆ پێڕست</a>
-    </a>
+  <hr>
+  <a href="index.html">گەڕانەوە بۆ پێڕست</a><hr>
+  <button id="stand" onclick="swapStyleSheet('q-style.css')">دەقی قورئان</button>
+  <button id="mean" onclick="swapStyleSheet('sq-style.css')">قورئان و ماناکان</button>
 </Return>
+<footer><address></address></footer>
 </html>

@@ -8,13 +8,18 @@
  <title>سورة الطُّور </title>
 <link href='https://fonts.googleapis.com/css?family=Amiri' rel='stylesheet'>
 </head>
-<link rel="stylesheet" href="q-style.css">
+<link id="pagestyle" rel="stylesheet" type="text/css" href="q-style.css">
+<script>
+function swapStyleSheet(sheet){
+    document.getElementById('pagestyle').setAttribute('href', sheet);
+}
+</script>
 </head>
 <header>
 		بۆ زانینی مانای وشەیەك پەنجە بنێ سەری<br>
-  </header>
+</header>
 <body>
-    <hr><center>سورة الطُّور</center><center><p> بِسْمِ <a> بەناوی</a><p><p> اللَّـهِ <a>خودا</a><p><p> الرَّحْمَـٰنِ <a>ئەوپەڕی میهرەبانی</a><p><p> الرَّحِيمِ <a>ئەوپەڕی بەخشندە</a><p></center>
+    <hr><center>سورة الطُّور</center><h3><p> بِسْمِ <a> بەناوی</a><p><p> اللَّـهِ <a>خودا</a><p><p> الرَّحْمَـٰنِ <a>ئەوپەڕی میهرەبانی</a><p><p> الرَّحِيمِ <a>ئەوپەڕی بەخشندە</a></p></h3>
         <p>وَالطُّورِ<a>سوێند بە كێوی طور</a></p>
         <nm>(١)</nm>
         <p>وَكِتَابٍ<a>وسوێند بە كیتابێكی</a></p>
@@ -357,17 +362,17 @@
         <p>وَإِدْبَارَ<a>و لەدوای پاشەكشی و ون بوونی</a></p>
         <p>النُّجُومِ<a>ئەستێرەكان یش</a></p>
         <nm>(٤٩)</nm>  
-        <br><a href="https://quranenc.com/ku/browse/kurdish_salahuddin/52">بۆ تەفسیری سورەتەکەش کلیکی  ئەمە بکە</a>
+        <br><a href="https://quranenc.com/ku/browse/kurdish_salahuddin/52"><hr>لێکدانەوە و تەفسیری ئایەتەکان</a>
 </body>
-<hr>
 <footer>
-	ئەگەر بتەوێ هەموو ماناكان دەركەوێت کلیکی   <a href="s52.html"> سورة الطُّورِ </a> بكە.<br> 
-	بۆ پەیوەندی و تێبینی فەرموو بۆ: 
-  <a href="https://www.facebook.com/groups/1068942280593023">سێبەری نوور</a><br>
+	ئەگەر بتەوێ هەموو ماناكان دەركەوێت سەردانی  <a href="https://justpaste.it/4q5aa"> سورة الطُّورِ </a> بكە.<br> 
+	<br>
+  <br>
 </footer>
 <Return>
   <hr>
-  <a href="index.html">گەڕانەوە بۆ پێڕست</a>
-  </a>
+  <a href="index.html">گەڕانەوە بۆ پێڕست</a><hr>
+  <button id="stand" onclick="swapStyleSheet('q-style.css')">دەقی قورئان</button>
+  <button id="mean" onclick="swapStyleSheet('sq-style.css')">قورئان و ماناکان</button>
 </Return>
 </html>

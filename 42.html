@@ -7,12 +7,16 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title> سورة الشُّورَى</title>
 <link href='https://fonts.googleapis.com/css?family=Amiri' rel='stylesheet'>
-<link rel="stylesheet" href="q-style.css">
+<link id="pagestyle" rel="stylesheet" type="text/css" href="q-style.css">
+<script>
+function swapStyleSheet(sheet){
+    document.getElementById('pagestyle').setAttribute('href', sheet);
+}
+</script>
 </head>
 <header>
-		إِنَّ اللَّهَ وَمَلَائِكَتَهُ يُصَلُّونَ عَلَى النَّبِيِّ يَا أَيُّهَا الَّذِينَ آمَنُوا صَلُّوا عَلَيْهِ وَسَلِّمُوا تَسْلِيمًا 	<hr>
-	</center>
-</header>
+		بۆ زانینی مانای وشەیەك پەنجە بنێ سەری<hr>
+	</header>
 <body>
 <p>سُورَةُ الشُّورَى<a></a></p>
 <br>
@@ -21,7 +25,6 @@
 <p>ٱلرَّحۡمَٰن<a>ناوێکی پیرۆزی خودایە (ئەوپەڕی میهرەبان)</a></p>
 <p>ٱلرَّحِيم<a>ناوێکی پیرۆزی خودایە (ئەوپەڕی بەخشندە)</a></p>
 <br>
-
 <p>حمٓ<a>حم</a></p>
 <nm>(١)</nm>
 <p>عٓسٓقٓ<a>عٓسٓق</a></p>
@@ -111,7 +114,7 @@
 <p>وَلَٰكِن<a>بەڵام</a></p>
 <p>يُدۡخِل<a>-</a></p>
 <p>مَن<a>ئەوەی</a></p>
-<p>يَشَآء<a>(-دەخاتە) ئەو دەیەویت</a></p>
+<p>يَشَآء<a> ئەو دەیەویت (-دەخاتە)</a></p>
 <p>فِي<a>ناو</a></p>
 <p>رَحۡمَتِهِۦ<a>میهرەبانی خۆی ( لە بەهەشت)</a></p>
 <p>وَٱلظَّٰلِمُون<a>و ستەمکاران</a></p>
@@ -426,7 +429,7 @@
 <p>ٱلصَّٰلِحَٰت<a>کارو کردەوە چاکەکان</a></p>
 <p>قُل<a>بڵێ</a></p>
 <p>لَّآ<a>-</a></p>
-<p>أَسۡ‍َٔلُكُمۡ<a>داوا( -نا)کەم</a></p>
+<p>أَسۡ‍َٔلُكُمۡ<a>داوا ( -نا)کەم</a></p>
 <p>عَلَيۡه<a>لەسەری</a></p>
 <p>أَجۡرًا<a>پاداشت و دەستحەقێ</a></p>
 <p>إِلَّا<a>جگەلە ، مەگەر ، تەنها ، بەدەرلە</a></p>
@@ -672,7 +675,7 @@
 <p>ظُلۡمِهِۦ<a>زوڵم وستەمەکەی</a></p>
 <p>فَأُوْلَٰٓئِك<a>ئەوە ئەوان</a></p>
 <p>مَا عَلَيۡهِم<a>لەسەریان نیە</a></p>
-<p>مِّن<a>(هیچ))</a></p>
+<p>مِّن<a>(هیچ)</a></p>
 <p>سَبِيلٍ<a>ڕێیێک</a></p>
 <nm>(٤١)</nm>
 <p>إِنَّمَا<a>لەڕاستیدا تەنها</a></p>
@@ -905,15 +908,11 @@
 <p>ٱلۡأُمُور<a>کار و فەرمانەکان</a></p>
 <nm>(٥٣)</nm>
 </body>
-<footer>
-    <hr>
-    <address>ئەگەر بتەوێ هەموو ماناكان دەركەوێت کلیکی  <a href="s42.html">ئێرە </a> بكە.<br> 
-   بۆ پەیوەندی و تێبینی فەرموو بۆ: <a href="https://www.facebook.com/groups/1068942280593023">سێبەری نوور</a><br>
-    یان پەیوەندی بکە بە:<a href="mailto:hadith4kurd@gmail.com">hadith4kurd@gmail.com</a><br>
-</footer>
-    
 <Return>
-<hr>
-<a href="index.html">گەڕانەوە بۆ پێڕست</a>
-</Return> 
+  <hr>
+  <a href="index.html">گەڕانەوە بۆ پێڕست</a><hr>
+  <button id="stand" onclick="swapStyleSheet('q-style.css')">دەقی قورئان</button>
+  <button id="mean" onclick="swapStyleSheet('sq-style.css')">قورئان و ماناکان</button>
+</Return>
+<footer><address></address></footer>
 </html>

@@ -6,16 +6,19 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title> سورة الْفَلَقِ</title>
 <link href='https://fonts.googleapis.com/css?family=Amiri' rel='stylesheet'>
-<link rel="stylesheet" href="q-style.css">
+<link id="pagestyle" rel="stylesheet" type="text/css" href="q-style.css">
+<script>
+function swapStyleSheet(sheet){
+    document.getElementById('pagestyle').setAttribute('href', sheet);
+}
+</script>
 </head>
 <header>
-		بۆ زانینی مانای وشەیەك پەنجە بنێ سەری<br>
-	<hr>
-	</center>
-</header>
+		بۆ زانینی مانای وشەیەك پەنجە بنێ سەری<hr>
+	</header>
 <body>
         <hr><center>سورة الْفَلَقِ</center>
-<center><p> بِسْمِ <a> بەناوی</a></p><p> اللَّـهِ <a>خودا</a></p><p> الرَّحْمَـٰنِ <a>ئەوپەڕی میهرەبانی</a></p><p> الرَّحِيمِ <a>ئەوپەڕی بەخشندە</a></p></center>
+<h3><p> بِسْمِ <a> بەناوی</a></p><p> اللَّـهِ <a>خودا</a></p><p> الرَّحْمَـٰنِ <a>ئەوپەڕی میهرەبانی</a></p><p> الرَّحِيمِ <a>ئەوپەڕی بەخشندە</a></p></h3>
 <p>قُلْ<a>بلێ </a></p>
 <p>أَعُوذُ<a>پەنادەخوازم </a></p>
 <p>بِرَبِّ<a>بەپەروەردیگاری </a></p>
@@ -50,14 +53,12 @@
  
 <nm> (٥)</nm>
 </body>
-<footer><hr>
-        <address>ئەگەر بتەوێ هەموو ماناكان دەركەوێت کلیکی  <a href="s113.html">ئێرە </a> بكە.<br> 
-       بۆ پەیوەندی و تێبینی فەرموو بۆ: <a href="https://www.facebook.com/groups/1068942280593023">سێبەری نوور</a><br>
-        یان پەیوەندی بکە بە:<a href="mailto:hadith4kurd@gmail.com">hadith4kurd@gmail.com</a><br>
-        Phone: 009647511068683
-</footer>
 <Return>
-        <hr>
-        <a href="index.html">گەڕانەوە بۆ پێڕست</a>
-    </Return> 
+  <hr>
+  <a href="index.html">گەڕانەوە بۆ پێڕست</a><hr>
+  <br><br><br>
+  <button onclick="swapStyleSheet('q-style.css')">قورئان</button>
+  <button id="mean" onclick="swapStyleSheet('sq-style.css')">قورئان و ماناکان</button>
+</Return>
+<footer><address></address></footer>
 </html>

@@ -6,16 +6,19 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title> سورة الشَّرْح</title>
 <link href='https://fonts.googleapis.com/css?family=Amiri' rel='stylesheet'>
-<link rel="stylesheet" href="q-style.css">
+<link id="pagestyle" rel="stylesheet" type="text/css" href="q-style.css">
+<script>
+function swapStyleSheet(sheet){
+    document.getElementById('pagestyle').setAttribute('href', sheet);
+}
+</script>
 </head>
 <header>
-		بۆ زانینی مانای وشەیەك پەنجە بنێ سەری<br>
-	<hr>
-	</center>
-</header>
+		بۆ زانینی مانای وشەیەك پەنجە بنێ سەری<hr>
+	</header>
 <body>
     <hr><center>سورة الشَّرْح</center>
-<center><p> بِسْمِ <a> بەناوی</a></p><p> اللَّـهِ <a>خودا</a></p><p> الرَّحْمَـٰنِ <a>ئەوپەڕی میهرەبانی</a></p><p> الرَّحِيمِ <a>ئەوپەڕی بەخشندە</a></p></center>
+<h3><p> بِسْمِ <a> بەناوی</a></p><p> اللَّـهِ <a>خودا</a></p><p> الرَّحْمَـٰنِ <a>ئەوپەڕی میهرەبانی</a></p><p> الرَّحِيمِ <a>ئەوپەڕی بەخشندە</a></p></h3>
 <p>أَلَمْ نَشْرَحْ<a>ئەدی واڵامان نەكردەوە و گوشادمان نەكرد </a></p>
 <p>لَكَ<a>بۆتۆ </a></p>
 <p>صَدْرَكَ<a>سینەت </a></p> 
@@ -52,18 +55,16 @@
 <nm> (٨)</nm>
  
  
- <center><a href="https://quranenc.com/ku/browse/kurdish_salahuddin/94">بۆ تەفسیری سورەتەکەش کلیکی  ئەم سایتە بکە</a></center>
+ <center><a href="https://quranenc.com/ku/browse/kurdish_salahuddin/94"><hr>لێکدانەوە و تەفسیری ئایەتەکان</a></center>
 </body>
-<footer><hr>
-        <address>ئەگەر بتەوێ هەموو ماناكان دەركەوێت کلیکی  <a href="s94.html">ئێرە </a> بكە.<br> 
-       بۆ پەیوەندی و تێبینی فەرموو بۆ: <a href="https://www.facebook.com/groups/1068942280593023">سێبەری نوور</a><br>
-        یان پەیوەندی بکە بە:<a href="mailto:hadith4kurd@gmail.com">hadith4kurd@gmail.com</a><br>
-        Phone: 009647511068683
-</footer>
-        
 <Return>
     <hr>
-    <a href="index.html">گەڕانەوە بۆ پێڕست</a>
-    </a>
-</Return> 
+    <a href="index.html">گەڕانەوە بۆ پێڕست</a><hr>
+  <button id="stand" onclick="swapStyleSheet('q-style.css')">دەقی قورئان</button>
+  <button id="mean" onclick="swapStyleSheet('sq-style.css')">قورئان و ماناکان</button>
+  </Return>
+<footer>
+        <address></address></footer>
+        
+ 
 </html>

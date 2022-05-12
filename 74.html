@@ -6,16 +6,20 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title>جوزئی تبارك</title>
 <link href='https://fonts.googleapis.com/css?family=Amiri' rel='stylesheet'>
-<link rel="stylesheet" href="q-style.css">
+<link id="pagestyle" rel="stylesheet" type="text/css" href="q-style.css">
+<script>
+function swapStyleSheet(sheet){
+    document.getElementById('pagestyle').setAttribute('href', sheet);
+}
+</script>
 </head>
 <header>
 		بۆ زانینی مانای وشەیەك پەنجە بنێ سەری<br>
 		<hr>
-	</center>
-</header>
+	</header>
 <body>
 <center>سورةالمدثر</center>
-<center><p>بسم <a> بەناوی</a></p><p>الله<a>خودا</a></p><p>الرحمن<a>ئەوپەڕی میهرەبانی</a></p><p>الرحیم<a>ئەوپەڕی بەخشندە</a></p></center><br>
+<h3><p>بسم <a> بەناوی</a></p><p>الله<a>خودا</a></p><p>الرحمن<a>ئەوپەڕی میهرەبانی</a></p><p>الرحیم<a>ئەوپەڕی بەخشندە</a></p></h3>
 <p>يَاأَيُّهَا<a>هۆ ئەی</a></p>
 <p>الْمُدَّثِّرُ<a>ئەوەی خۆی پێچاوەتەوە</a></p>
 <nm>(١)</nm>
@@ -307,17 +311,14 @@
 <p>وَأَهْلُ<a>و(شایستە بە)</a></p>
 <p>الْمَغْفِرَةِ<a>لێبوردن ولێخۆشبوون</a></p>
 <nm>(٥٦)</nm>
-<center><a href="https://quranenc.com/ku/browse/kurdish_salahuddin/74">بۆ تەفسیری سورەتەکەش کلیکی  ئەم سایتە بکە</a></center>
+<center><a href="https://quranenc.com/ku/browse/kurdish_salahuddin/74"><hr>لێکدانەوە و تەفسیری ئایەتەکان</a></center>
 </body>
-<footer>
-	<hr>
-	<address>ئەگەر بتەوێ هەموو ماناكان دەركەوێت کلیکی  <a href="s74.html">جوزئی تبارك</a> بكە.<br> 
-	بۆ پەیوەندی و تێبینی فەرموو بۆ: 
- <a href="https://www.facebook.com/groups/1068942280593023">سێبەری نوور</a><br></address>
-</footer>
- <Return>
+<Return>
     <hr>
-    <a href="index.html">گەڕانەوە بۆ پێڕست</a>
-    </a>
-</Return>
+    <a href="index.html">گەڕانەوە بۆ پێڕست</a><hr>
+  <button id="stand" onclick="swapStyleSheet('q-style.css')">دەقی قورئان</button>
+  <button id="mean" onclick="swapStyleSheet('sq-style.css')">قورئان و ماناکان</button>
+  </Return>
+<footer><address></address></footer>
+ 
 </html>

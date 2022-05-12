@@ -8,7 +8,12 @@
  <title>سورة الصف</title>
 <link href='https://fonts.googleapis.com/css?family=Amiri' rel='stylesheet'>
 </head>
-<link rel="stylesheet" href="q-style.css">
+<link id="pagestyle" rel="stylesheet" type="text/css" href="q-style.css">
+<script>
+function swapStyleSheet(sheet){
+    document.getElementById('pagestyle').setAttribute('href', sheet);
+}
+</script>
 </head>
 <header>
 		بۆ زانینی مانای وشەیەک پەنجە بنێ سەری<br>
@@ -18,8 +23,7 @@
 		<p>الله<a>خودا</a></p>
 		<p>الرحمن<a>ئەوپەڕی میهرەبانی</a></p>
 		<p>الرحیم<a>ئەوپەڕی بەخشندە</a></p>
-	</center>
-</header>
+	</header>
 <body>
     <p>سَبَّحَ<a>تەسبیحاتی کردووە</a></p>
     <p>لِلَّـهِ<a>بۆ خودا</a></p>
@@ -246,17 +250,13 @@
     <p>فَأَصْبَحُوا<a>جا بوون بە</a></p>
     <p>ظَاهِرِينَ<a>سەرکەوتوو</a></p>
     <nm>(١٤)</nm>
-    <br><a href="https://quranenc.com/ku/browse/kurdish_salahuddin/61">بۆ تەفسیری سورەتەکەش کلیکی  ئەمە بکە</a>
+    <br><a href="https://quranenc.com/ku/browse/kurdish_salahuddin/61"><hr>لێکدانەوە و تەفسیری ئایەتەکان</a>
 </body>
-<hr>
-<footer>
-	<address>ئەگەر بتەوێ هەموو ماناکان دەرکەوێت کلیکی   <a href="s61.html"> سورة الصف</a> بکە.<br> 
-	بۆ پەیوەندی و تێبینی فەرموو بۆ:<br>
-  <a href="https://www.facebook.com/groups/1068942280593023">سێبەری نوور</a><br></address>
-</footer>
 <Return>
-    <hr>
-    <a href="index.html">گەڕانەوە بۆ پێڕست</a>
-    </a>
+  <hr>
+  <a href="index.html">گەڕانەوە بۆ پێڕست</a><hr>
+  <button id="stand" onclick="swapStyleSheet('q-style.css')">دەقی قورئان</button>
+  <button id="mean" onclick="swapStyleSheet('sq-style.css')">قورئان و ماناکان</button>
 </Return>
+<footer><address></address></footer>
 </html>

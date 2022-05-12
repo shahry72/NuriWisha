@@ -5,7 +5,7 @@ header{
 h1{
 	color: aliceblue;
 }
-h2{
+h3{
     color:rgb(11, 11, 12);
 }
 header .UpNav{
@@ -19,7 +19,7 @@ header .UpNav:hover{
 	background-color: rgb(3, 3, 3);
 }
 body {
-    background-color: bisque;
+    background-color: rgb(255, 228, 196);
 	direction:rtl;
 	line-height:1.5em;
 	font-size: 1.5rem;
@@ -66,7 +66,7 @@ li .pcf{
     color: rgb(95, 63, 223);
 }
 footer{
-    color: yellow;
+    color: rgb(255, 255, 255);
     background-color: brown;
     text-align: center;
     clear: both;

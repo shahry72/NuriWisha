@@ -6,16 +6,19 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title> سورة الْأَعْلَى</title>
 <link href='https://fonts.googleapis.com/css?family=Amiri' rel='stylesheet'>
-<link rel="stylesheet" href="q-style.css">
+<link id="pagestyle" rel="stylesheet" type="text/css" href="q-style.css">
+<script>
+function swapStyleSheet(sheet){
+    document.getElementById('pagestyle').setAttribute('href', sheet);
+}
+</script>
 </head>
 <header>
-		بۆ زانینی مانای وشەیەك پەنجە بنێ سەری<br>
-	<hr>
-	</center>
-</header>
+		بۆ زانینی مانای وشەیەك پەنجە بنێ سەری<hr>
+	</header>
 <body>
     <hr><center>سورة الْأَعْلَى</center>
-<center><p> بِسْمِ <a> بەناوی</a></p><p> اللَّـهِ <a>خودا</a></p><p> الرَّحْمَـٰنِ <a>ئەوپەڕی میهرەبانی</a></p><p> الرَّحِيمِ <a>ئەوپەڕی بەخشندە</a></p></center>
+<h3><p> بِسْمِ <a> بەناوی</a></p><p> اللَّـهِ <a>خودا</a></p><p> الرَّحْمَـٰنِ <a>ئەوپەڕی میهرەبانی</a></p><p> الرَّحِيمِ <a>ئەوپەڕی بەخشندە</a></p></h3>
 <p>سَبِّحِ<a>پاك و پیرۆز ڕاگرە </a></p>
 <p>اسْمَ<a>ناوی </a></p>
 <p>رَبِّكَ<a>پەروەردیگارت </a></p>
@@ -103,16 +106,12 @@
 <p>صُحُفِ<a>نامەی </a></p>
 <p>إِبْرَاهِيمَ وَمُوسَىٰ<a>ئیبراهیم و موسا </a></p> 
 <nm> (١٩)</nm>
- <center><a href="https://quranenc.com/ku/browse/kurdish_salahuddin/87">بۆ تەفسیری سورەتەکەش کلیکی  ئەم سایتە بکە</a></center>
+ <center><a href="https://quranenc.com/ku/browse/kurdish_salahuddin/87"><hr>لێکدانەوە و تەفسیری ئایەتەکان</a></center>
 </body>
-<footer><hr>
-        <address>ئەگەر بتەوێ هەموو ماناكان دەركەوێت کلیکی  <a href="s87.html">ئێرە </a> بكە.<br> 
-       بۆ پەیوەندی و تێبینی فەرموو بۆ: <a href="https://www.facebook.com/groups/1068942280593023">سێبەری نوور</a><br>
-        یان پەیوەندی بکە بە:<a href="mailto:hadith4kurd@gmail.com">hadith4kurd@gmail.com</a><br>
-        Phone: 009647511068683
-</footer>
-        
 <Return>
-    <hr><a href="index.html">گەڕانەوە بۆ پێڕست</a>
+  <hr>
+  <a href="index.html">گەڕانەوە بۆ پێڕست</a><hr>
+  <button id="stand" onclick="swapStyleSheet('q-style.css')">دەقی قورئان</button>
+  <button id="mean" onclick="swapStyleSheet('sq-style.css')">قورئان و ماناکان</button>
 </Return>
-</html>
+<footer><address></address></footer>
