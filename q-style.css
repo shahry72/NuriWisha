@@ -40,9 +40,10 @@ body {
 		font-family: 'Amiri';
 		font-weight: bold;
 		/* min-height: 50vh; */
-		text-align: left;
+		text-align: center;
 		text-align-last: center;
-		/* width: 100%; */
+		max-width:100%;
+		width: auto;
 	}
 			
 body li {list-style-type:arabic-indic;}
