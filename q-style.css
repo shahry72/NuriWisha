@@ -1,10 +1,14 @@
 header{
-	
 	color:rgb(241, 242, 233);
-	background-color: rgb(11, 122, 35);
+	background-color: rgba(70, 40, 3, 0.318);
 	/* font-family: 'Times New Roman', Times, serif; */
+	margin: 0%;
+	padding-left: 0%;
+	
 }
-body {	
+body {	position: relative;
+		margin: 0%;
+		padding: 0%;
 		direction:rtl;
 		background-color: bisque;
 		/* line-height:1.5em; */
@@ -16,12 +20,13 @@ body {
 		text-align-last: center;
 		max-width:100%;
 		width: auto;
+		
 	}
 p 	{	position: relative;
 		display: inline-block;
 		color:rgb(8, 8, 8);
 		text-size-adjust: auto;
-		text-align: center;	
+		text-align: left;	
 		cursor:zoom-in;
 	}
 
@@ -34,8 +39,8 @@ p 	{	position: relative;
 			font-family: 'Times New Roman', Times, serif;
 			align-content: center;
 			padding: 3px;
-            
-            /* Position the tooltip */
+ 
+ /* Position the tooltip */
 			visibility: hidden;
 			position: absolute;
 			border-radius: 20%;
@@ -72,14 +77,15 @@ h3{
 
 return button{
 	color: #eaf0ec;
-	background-color: rgb(11, 122, 35);
+	background-color: rgb(67, 56, 25);
 	font-size:15px;
 	padding: 5px;
 	border-radius: 40%;
+	
 }
 return a{
 	color: rgb(255, 255, 255);
-	background-color: rgb(165, 42, 42);;
+	background-color: rgb(165, 42, 42);
 	text-decoration: none;
 	font-size:15px;
 	padding: 11px;
