@@ -77,15 +77,15 @@ h3{
 
 return button{
 	color: #eaf0ec;
-	background-color: rgb(68, 93, 68);
+	background-color: rgb(149, 93, 24);
 	font-size:15px;
 	padding: 5px;
-	border-radius: 40%;
+	border-radius: 30%;
 	
 }
 return a{
 	color: rgb(255, 255, 255);
-	background-color: rgba(44, 11, 29, 0.764);
+	background-color: rgba(25, 94, 13, 0.764);
 	text-decoration: none;
 	font-size:15px;
 	padding: 11px;
