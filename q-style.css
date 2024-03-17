@@ -48,7 +48,9 @@ p 	{	position: relative;
 			top: -35px;
 			right: 3%;		
 		}
-
+body a{
+			text-decoration: none;
+		} 
 p:hover a {visibility: visible;}
 
 			
