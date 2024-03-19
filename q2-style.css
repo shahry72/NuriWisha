@@ -1,0 +1,88 @@
+header {
+    color: rgb(241, 242, 233);
+    background-color: rgba(70, 40, 3, 0.318);
+    padding: 1em; /* Add padding for better spacing */
+    text-align: center; /* Center align header content */
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+    background-color: bisque;
+    font-size: 4vw; /* Adjust font size relative to viewport width */
+    font-family: 'Amiri';
+    font-weight: bold;
+    text-align: center;
+
+body a{
+        text-decoration: none;
+    } 
+}
+
+p { position: relative;
+    display: inline-block;
+    color: rgb(8, 8, 8);
+    /* text-align: left; */
+    cursor: pointer; /* Change cursor type to indicate interactivity */
+    margin: 0.5em; /* Add margin for better spacing */
+}
+
+p a {
+    display: inline-block;
+    visibility: hidden;
+    position: absolute;
+    background-color: rgb(73, 21, 45);
+    color: #fcf8f5ee;
+    padding: 0.5em; /* Adjust padding for better touch interaction */
+    font-size: 3vw; /* Adjust font size relative to viewport width */
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 10px; /* Adjust border radius for better appearance */
+    text-decoration: none;
+}
+
+p:hover a {
+    visibility: visible;
+}
+
+body li {
+    list-style-type: arabic-indic;
+}
+
+body p {direction: rtl;}
+
+p:hover { color: rgb(150, 25, 77);}
+
+nm {
+    color: #c26334;
+}
+
+h3 {
+    color: rgb(36, 130, 181);
+    text-align: center;
+    line-height: 1.25em;
+    font-size: 4vw; /* Adjust font size relative to viewport width */
+    font-family: 'Amiri';
+}
+
+#stand {
+    visibility: hidden;
+}
+
+return button {
+    color: #eaf0ec;
+    background-color: rgb(149, 93, 24);
+    font-size: 3vw; /* Adjust font size relative to viewport width */
+    padding: 0.5em; /* Adjust padding for better touch interaction */
+    border-radius: 10px; /* Adjust border radius for better appearance */
+}
+
+return a {
+    color: rgb(255, 255, 255);
+    background-color: rgba(25, 94, 13, 0.764);
+    text-decoration: none;
+    font-size: 3vw; /* Adjust font size relative to viewport width */
+    padding: 1em; /* Adjust padding for better touch interaction */
+    border-radius: 20px; /* Adjust border radius for better appearance */
+}
