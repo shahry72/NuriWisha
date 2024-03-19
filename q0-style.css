@@ -6,17 +6,18 @@ header{
 	padding-left: 0%;
 	
 }
-body {	position: relative;
-		margin: 0%;
-		padding: 0%;
+body {	
+        position: relative;
+		margin: 3%;
+		padding: 3%;
 		direction:rtl;
 		background-color: bisque;
-		/* line-height:1.5em; */
-		font-size: 4vw; /* Adjust font size relative to viewport width */
+		line-height:1.5em;
+		font-size: 6vw; /* Adjust font size relative to viewport width */
 		font-family: 'Amiri';
 		font-weight: bold;
 		/* min-height: 50vh; */
-		text-align: left;
+		/* text-align: left; */
 		text-align-last: center;
 		/* max-width:100%;
 		width: auto; */
@@ -27,7 +28,7 @@ p 	{	position: relative;
 		display: inline-block;
 		color:rgb(8, 8, 8);
 		/* text-size-adjust: auto; */
-		text-align: left;	
+		/* text-align: left;	 */
 		cursor:zoom-in;
 		margin: 0.5em; /* Add margin for better spacing */
 	}
