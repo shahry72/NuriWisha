@@ -35,19 +35,20 @@ p 	{	position: relative;
 
 	p a {	
 			display:inline-block;
-			background-color:rgb(73, 21, 45);
-			color: #fcf8f5ee;
+			background-color:rgb(20, 6, 13);
+			color: #f3ff87;
 			/* width:max-content; */
 			/* font-size: 16px; */
 			font-size: 3vw; /* Adjust font size relative to viewport width */
 			font-family: 'Times New Roman', Times, serif;
 			align-content: center;
+            line-height: normal;
 			padding: 0.5em; /* Adjust padding for better touch interaction */
 			/* Position the tooltip */
 			visibility: hidden;
 			position: absolute;
 			border-radius: 15%;
-			z-index: auto;
+			/* z-index: auto; */
 			/* top: -35px; */
 			/* right: 3%;		 */
 		}
