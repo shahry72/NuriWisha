@@ -1,68 +1,77 @@
 header{
-	color:rgb(241, 242, 233);
-	background-color: rgba(70, 40, 3, 0.318);
-	/* font-family: 'Times New Roman', Times, serif; */
-	margin: 0%;
-	padding-left: 0%;
-	
+ color:rgb(241, 242, 233);
+ background-color: rgba(70, 40, 3, 0.797);
+ /* font-family: 'Times New Roman', Times, serif; */
+ margin: 3%;
+ padding:20px;
+ border-radius: 30%;
 }
-body {	
-        position: relative;
-		margin: 5%;
-		padding: 3%;
-		direction:rtl;
-		background-color: bisque;
-		line-height:1em;
-		font-size: 6vw; /* Adjust font size relative to viewport width */
-		font-family: 'Amiri';
-		font-weight: bold;
-      	/* min-height: 50vh; */
-		text-align: center;
-		text-align-last: center;
-		max-width:100%;
-		width: auto;
-		
-	}
+body { 
+  border: ridge;
+  border-width: 10px;
+  border-radius: 5%;
+  border-color:burlywood ;
+  position: relative;
+  /* margin: 5%; */
+  /* padding: 3%; */
+  direction:rtl;
+  /* background-color: bisque; */
+  background-color:khaki ;
+  line-height:1.5em;
+  font-size: 4.5vw; /* Adjust font size relative to viewport width */
+  font-family: 'Amiri';
+  font-weight: bold;
+       /* min-height: 50vh; */
+  text-align: center;
+  text-align-last: center;
+  max-width:100%;
+  width: auto;
+  
+ }
 
-p 	{	position: relative;
-		display: inline-block;
-		color:rgb(8, 8, 8);
+p  { position: relative;
+  display: inline-block;
+  color:rgb(8, 8, 8);
         /* text-size-adjust: auto; */
-		/* text-align: left;	 */
-		cursor:zoom-in;
-		margin: 0.5em; /* Add margin for better spacing */
-	}
+  /* text-align: left;  */
+  cursor:zoom-in;
+  margin: 0.5em; /* Add margin for better spacing */
+ }
 
-	p a {	
-			display:inline-block;
-			background-color:rgba(109, 70, 16, 0.99);
-			color: rgb(250, 250, 29, 0.99);
-			/* width:max-content; */
-			/* font-size: 16px; */
-			font-size: 3vw; /* Adjust font size relative to viewport width */
-			font-family: 'Times New Roman', Times, serif;
-			align-content: center;
-            line-height: normal;
-			padding: 0.5em; /* Adjust padding for better touch interaction */
-			/* Position the tooltip */
-			visibility: hidden;
-			position: absolute;
-			border-radius: 15%;
-			z-index: 6;
-			top: -35px;
-			/* right: 3%;		 */
-		}
+ p a { 
+   display:none;
+   background-color:rgba(109, 70, 16, 0.99);
+   color: rgb(250, 250, 29, 0.99);
+   /* width:max-content; */
+   /* font-size: 16px; */
+   font-size: 3vw; /* Adjust font size relative to viewport width */
+   font-family: 'Times New Roman', Times, serif;
+   align-content: center;
+   line-height: normal;
+   padding: 0.5em; /* Adjust padding for better touch interaction */
+   /* Position the tooltip */
+   /* visibility: hidden; */
+   position: absolute;
+   border-radius: 15%;
+   z-index: 6;
+   top: -35px;
+   /* right: 3%;   */
+  }
 body a{
-		text-decoration: none;
-        font-size: 3.5vw;
-		} 
-p:hover a {visibility: visible;}
+        text-decoration: none;
+        font-size: 3vw;
+         } 
+p:hover a {
+  display: block;
+  visibility: visible;
+  font-size: 3vw;
+  }
 
-			
+   
 body li {list-style-type:arabic-indic;}
-		
+  
 
-body p	{	
+body p { 
     direction: rtl;
     }
                 
@@ -72,29 +81,32 @@ p:hover{color:rgb(213, 176, 147);
 
 
 /* h3{
-	color: rgb(36, 130, 181);
-	text-align: center;
-	line-height:1.25em;
+ color: rgb(36, 130, 181);
+ text-align: center;
+ line-height:1.25em;
     font-size: 4vw; /* Adjust font size relative to viewport width 
-	font-family: 'Amiri';
+ font-family: 'Amiri';
 } */
 
 #stand {
-	visibility: hidden;
+ /* visibility: hidden; */
+ display:none;
 }
 
 return button{
-	color: #eaf0ec;
-	background-color: rgb(149, 93, 24);
-    font-size: 3vw; /* Adjust font size relative to viewport width */
-    padding: 0.5em; /* Adjust padding for better touch interaction */
-    border-radius: 10px; /* Adjust border radius for better appearance */
+ color: rgb(255, 255, 255);
+ background-color: rgb(149, 93, 24);
+ font-size: 3vw; /* Adjust font size relative to viewport width */
+ padding: 0.5em; /* Adjust padding for better touch interaction */
+ border-radius: 70px; /* Adjust border radius for better appearance */
+ font-family: 'Amiri';
 }
 return a{
-	color: rgb(255, 255, 255);
-	background-color: rgba(25, 94, 13, 0.764);
-	text-decoration: none;
-	font-size: 3vw; /* Adjust font size relative to viewport width */
-    padding: 1em; /* Adjust padding for better touch interaction */
-    border-radius: 20px; /* Adjust border radius for better appearance */
+ color: rgb(255, 255, 255);
+ background-color: rgb(31, 20, 5);
+ text-decoration: none;
+ font-size: 3vw; /* Adjust font size relative to viewport width */
+ padding: 0.5em; /* Adjust padding for better touch interaction */
+ border-radius: 70px; /* Adjust border radius for better appearance */
+
 }
