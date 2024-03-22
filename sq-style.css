@@ -49,8 +49,8 @@ footer {
 return button,
 return a {
     color: rgb(255, 255, 255);
-    font-size: 3vw; /* Adjust font size relative to viewport width */
-    padding: 0.5em; /* Adjust padding for better touch interaction */
+    font-size: 2vw; /* Adjust font size relative to viewport width */
+    padding: 1em; /* Adjust padding for better touch interaction */
     border-radius: 70px; /* Adjust border radius for better appearance */
 }
 
