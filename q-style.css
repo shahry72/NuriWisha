@@ -54,7 +54,7 @@ p a {
   border-radius: 15%;
   z-index: 6;
   top: -222%;
-  left: 40%;
+  left: -10%;
   flex-wrap: wrap;
   width: fit-content;
 }
