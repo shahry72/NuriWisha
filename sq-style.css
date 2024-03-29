@@ -1,65 +1,65 @@
-/*  لۆ مۆبایل قورئان و ماناکان */
+/* لۆ مۆبایل قورئان و ماناکان */
 
 body {
-    direction: rtl;
-    background: hsla(77, 20%, 93%, 0.933);
-    font-family: 'Amiri';
-    padding: 3px;
-    line-height: 5%;
-    text-align: center;
-    border: double green;
+  direction: rtl;
+  background: hsla(77, 20%, 93%, 0.933);
+  font-family: 'Amiri';
+  padding: 3px;
+  line-height: 5%;
+  text-align: center;
+  border: double green;
 }
 
 p {
-    visibility: visible;
-    display: inline-block;
-    color: rgb(75, 163, 73);
-    text-align: center;
-    font-size: 4vw;
-    font-weight: bold;
+  visibility: visible;
+  display: inline-block;
+  color: rgb(75, 163, 73);
+  text-align: center;
+  font-size: 4vw;
+  font-weight: bold;
 }
 
 p a {
-    visibility: visible;
-    display: inline-block;
-    color: rgb(0, 0, 0);
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding: 5px;
-    font-weight: normal;
+  visibility: visible;
+  display: inline-block;
+  color: rgb(0, 0, 0);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding: 5px;
+  font-weight: normal;
 }
 
 body a {
-    text-decoration: none;
-    font-size: 3.5vw;
+  text-decoration: none;
+  font-size: 3.5vw;
 }
 
 nm {
-    color: #959191;
+  color: #959191;
 }
 
 header,
 footer {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 #mean {
-    display: none;
+  display: none;
 }
 
 return button,
 return a {
-    color: rgb(255, 255, 255);
-    font-size: 2vw; /* Adjust font size relative to viewport width */
-    padding: 1em; /* Adjust padding for better touch interaction */
-    border-radius: 70px; /* Adjust border radius for better appearance */
+  color: rgb(255, 255, 255);
+  font-size: 2vw; /* Adjust font size relative to viewport width */
+  padding: 1em; /* Adjust padding for better touch interaction */
+  border-radius: 70px; /* Adjust border radius for better appearance */
 }
 
 return button {
-    background-color: rgb(149, 93, 24);
-    font-family: 'Amiri';
+  background-color: rgb(149, 93, 24);
+  font-family: 'Amiri';
 }
 
 return a {
-    background-color: rgb(31, 20, 5);
-    text-decoration: none;
+  background-color: rgb(31, 20, 5);
+  text-decoration: none;
 }

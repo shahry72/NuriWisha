@@ -2,100 +2,100 @@
 
 /* Base styling for the body */
 body {
-  position: relative;
-  direction: rtl;
-  background-color: khaki;
-  font-family: 'Amiri';
-  font-size: 4.5vw;
-  font-weight: bold;
-  line-height: 1.2em;
-  text-align: center;
-  text-align-last: center;
-  max-width: 100%;
-  width: auto;
-  border: ridge 10px burlywood;
-  border-radius: 5%;
+ position: relative;
+ direction: rtl;
+ background-color: khaki;
+ font-family: 'Amiri';
+ font-size: 4.5vw;
+ font-weight: bold;
+ line-height: 1.2em;
+ text-align: center;
+ text-align-last: center;
+ max-width: 100%;
+ width: auto;
+ border: ridge 10px burlywood;
+ border-radius: 5%;
 }
 
 /* Styling for headers */
 header {
-  color: rgb(241, 242, 233);
-  background-color: rgba(70, 40, 3, 0.797);
-  margin: 3%;
-  padding: 10px;
-  font-size: 2.7vw;
-  border-radius: 20%;
-  /* font-family: 'Times New Roman', Times, serif; */
+ color: rgb(241, 242, 233);
+ background-color: rgba(70, 40, 3, 0.797);
+ margin: 3%;
+ padding: 10px;
+ font-size: 2.7vw;
+ border-radius: 20%;
+ /* font-family: 'Times New Roman', Times, serif; */
 }
 
 /* Styling for paragraphs */
 p {
-  position: relative;
-  display: inline-block;
-  color: rgb(8, 8, 8);
-  cursor: zoom-in;
-  margin: 0.5em;
-  direction: rtl;
+ position: relative;
+ display: inline-block;
+ color: rgb(8, 8, 8);
+ cursor: zoom-in;
+ margin: 0.5em;
+ direction: rtl;
 }
 
 /* Paragraph hover state */
 p:hover {
-  color: rgb(213, 176, 147);
+ color: rgb(213, 176, 147);
 }
 
 /* Anchor tags within paragraphs */
 p a {
-  display: none;
-  font-size: 3vw;
-  font-family: 'Times New Roman', Times, serif;
-  line-height: normal;
-  padding: 0.2em;
-  position: absolute;
-  border-radius: 15%;
-  z-index: 6;
-  top: -222%;
-  left: -10%;
-  flex-wrap: wrap;
-  width: fit-content;
+ display: none;
+ font-size: 3vw;
+ font-family: 'Times New Roman', Times, serif;
+ line-height: normal;
+ padding: 0.2em;
+ position: absolute;
+ border-radius: 15%;
+ z-index: 6;
+ top: -222%;
+ left: -10%;
+ flex-wrap: wrap;
+ width: fit-content;
 }
 
 /* Anchor tags within paragraphs on hover */
 p:hover a {
-  display: inline;
-  visibility: visible;
-  background-color: rgba(109, 70, 16, 0.99);
-  color: rgba(250, 250, 29, 0.99);
+ display: inline;
+ visibility: visible;
+ background-color: rgba(109, 70, 16, 0.99);
+ color: rgba(250, 250, 29, 0.99);
 }
 
 /* Anchor tags within body */
 body a {
-  text-decoration: none;
-  font-size: 3vw;
+ text-decoration: none;
+ font-size: 3vw;
 }
 
 /* List item styling */
 body li {
-  list-style-type: arabic-indic;
+ list-style-type: arabic-indic;
 }
 
 /* Special styling for #stand ID */
 #stand {
-  display: none;
+ display: none;
 }
 
 /* Styling for return buttons */
 return button,
 return a {
-  color: rgb(255, 255, 255);
-  background-color: rgb(149, 93, 24); /* Note: return a has a different background-color */
-  font-size: 2vw;
-  padding: 0.5em;
-  border-radius: 70px;
-  font-family: 'Amiri';
+ color: rgb(255, 255, 255);
+ background-color: rgb(149, 93, 24); /* Note: return a has a different background-color */
+ font-size: 2vw;
+ padding: 0.5em;
+ border-radius: 70px;
+ font-family: 'Amiri';
 }
 
 /* Specific background-color override for return links */
 return a {
-  background-color: rgb(31, 20, 5);
-  text-decoration: none;
+ background-color: rgb(31, 20, 5);
+ text-decoration: none;
 }
