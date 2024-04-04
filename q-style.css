@@ -88,9 +88,9 @@ return button,
 return a {
  color: rgb(255, 255, 255);
  background-color: rgb(149, 93, 24); /* Note: return a has a different background-color */
- font-size: 2vw;
+ font-size: 4vw;
  padding: 0.5em;
- border-radius: 70px;
+ border-radius: 50px;
  font-family: 'Amiri';
 }
 
