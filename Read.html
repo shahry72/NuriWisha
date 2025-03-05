@@ -1,0 +1,316 @@
+<--this to read files or websites sentence by sentence and to save the interested sentence and be able to navigate to certain percentage of the document with fraction of -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web, File & PDF Text Extractor</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/papaparse/5.3.2/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: auto;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        input, button {
+            margin: 10px 0;
+            padding: 12px 18px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            width: 85%;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input[type="number"] {
+            width: 35%;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        input[type="number"]:focus,
+        input[type="file"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            width: 85%;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #sentence {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            min-height: 60px;
+            font-size: 18px;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .controls button {
+            width: 25%;
+            background-color: #007bff;
+            border: none;
+        }
+
+        .controls button:hover {
+            background-color: #0056b3;
+        }
+
+        #percentageLabel {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="range"] {
+            width: 80%;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="range"]:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        /* Add animation to the sentence change */
+        #sentence {
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Extract Text from File, PDF, or URL</h2>
+        <input type="file" id="fileInput" accept=".txt, .csv, .json, .html, .pdf">
+        <input type="text" id="urlInput" placeholder="Enter webpage URL">
+        <button onclick="fetchWebpage()">Fetch Text</button>
+        
+        <div id="sentence">Extracted text will appear here...</div>
+        
+        <div>
+            <input type="number" id="percentageInput" placeholder="Enter percentage" min="0" max="100" oninput="updatePercentageInput()" />
+            <button onclick="jumpToExactPercentage()">Jump to Percentage</button>
+        </div>
+        
+        <span id="percentageLabel">0%</span>
+
+        <div class="controls">
+            <button onclick="prevSentence()">Previous</button>
+            <button onclick="nextSentence()">Next</button>
+            <button onclick="saveSentence()">Save Sentence</button>
+            <button onclick="downloadSavedSentences()">Download Saved</button>
+        </div>
+    </div>
+
+    <script>
+        let sentences = [];
+        let currentIndex = -1;
+        let savedSentences = [];
+        const proxyURL = "https://api.allorigins.win/raw?url="; // CORS proxy
+
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                if (file.name.endsWith(".html")) {
+                    processHTML(e.target.result);
+                } else if (file.name.endsWith(".pdf")) {
+                    processPDF(e.target.result);
+                } else {
+                    processText(e.target.result);
+                }
+            };
+            if (file.name.endsWith(".pdf")) {
+                reader.readAsArrayBuffer(file);
+            } else {
+                reader.readAsText(file);
+            }
+        });
+
+        async function fetchWebpage() {
+            let url = document.getElementById('urlInput').value;
+            if (!url) {
+                alert("Please enter a URL");
+                return;
+            }
+            try {
+                let response = await fetch(url);
+                if (!response.ok) throw new Error("Direct fetch failed, trying proxy...");
+                let text = await response.text();
+                processHTML(text);
+            } catch (error) {
+                console.warn("Direct fetch failed, using proxy:", error);
+                try {
+                    let proxyResponse = await fetch(proxyURL + encodeURIComponent(url));
+                    if (!proxyResponse.ok) throw new Error("Proxy fetch failed");
+                    let proxyText = await proxyResponse.text();
+                    processHTML(proxyText);
+                } catch (proxyError) {
+                    alert("Failed to fetch webpage, even with a proxy.");
+                }
+            }
+        }
+
+        function processHTML(htmlText) {
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(htmlText, "text/html");
+            let extractedText = extractRelevantText(doc);
+            processText(extractedText);
+        }
+
+        function extractRelevantText(doc) {
+            let unwantedSelectors = ["nav", "footer", "aside", "script", "style", "meta",
+                ".ads", ".advertisement", ".promo", ".sponsored", 
+                ".header", ".footer", ".subscribe", ".related-content", ".cookie-banner"
+            ];
+            unwantedSelectors.forEach(selector => {
+                doc.querySelectorAll(selector).forEach(el => el.remove());
+            });
+
+            let elements = doc.querySelectorAll("h1, h2, h3, h4, h5, h6, p, article, section, div");
+            let content = [];
+            elements.forEach(el => {
+                let text = el.innerText.trim();
+                if (text.length > 50 && !isCommonBoilerplate(text)) {
+                    content.push(text);
+                }
+            });
+            return content.join(" \n");
+        }
+
+        function isCommonBoilerplate(text) {
+            const commonPhrases = ["Read more", "Subscribe", "Click here", "Learn more", "Follow us", "Privacy Policy", "Terms of Service"];
+            return commonPhrases.some(phrase => text.includes(phrase));
+        }
+
+        async function processPDF(pdfData) {
+            let pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
+            let extractedText = "";
+            for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                let page = await pdf.getPage(pageNum);
+                let textContent = await page.getTextContent();
+                extractedText += textContent.items.map(item => item.str).join(" ") + " ";
+            }
+            processText(extractedText);
+        }
+
+        function processText(text) {
+            sentences = text.split(/(?<=[.!?])\s+/).filter(s => s.trim().length > 0);
+            currentIndex = 0;
+            updatePercentageLabel();
+            displaySentence();
+        }
+
+        function displaySentence() {
+            if (sentences.length > 0 && currentIndex >= 0) {
+                document.getElementById('sentence').innerText = sentences[currentIndex];
+                updatePercentageLabel();
+            }
+        }
+
+        function nextSentence() {
+            if (sentences.length > 0) {
+                currentIndex = (currentIndex + 1) % sentences.length;
+                displaySentence();
+            }
+        }
+
+        function prevSentence() {
+            if (sentences.length > 0) {
+                currentIndex = (currentIndex - 1 + sentences.length) % sentences.length;
+                displaySentence();
+            }
+        }
+
+       function jumpToExactPercentage() {
+		let percentage = parseFloat(document.getElementById('percentageInput').value);
+		if (!isNaN(percentage) && percentage >= 0 && percentage <= 100) {
+        currentIndex = Math.floor((percentage / 100) * (sentences.length - 1));
+        displaySentence();
+		} 
+		else {
+        alert("Please enter a valid percentage between 0 and 100.");
+			}
+}
+
+
+        function updatePercentageLabel() {
+            if (sentences.length > 0) {
+                let percentage = Math.round((currentIndex / (sentences.length - 1)) * 100);
+                document.getElementById('percentageLabel').innerText = percentage + "%";
+            }
+        }
+
+        function saveSentence() {
+            if (sentences.length > 0 && currentIndex >= 0) {
+                let sentence = sentences[currentIndex];
+                if (!savedSentences.includes(sentence)) {
+                    savedSentences.push(sentence);
+                }
+            }
+        }
+
+        function downloadSavedSentences() {
+            let blob = new Blob([savedSentences.join("\n")], { type: "text/plain" });
+            let link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "selectedSentences.txt";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<--Word by Word fro Web, File & PDF Text Extractor-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word by Word fro Web, File & PDF Text Extractor</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/papaparse/5.3.2/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: auto;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        input, button {
+            margin: 10px 0;
+            padding: 12px 18px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            width: 85%;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input[type="file"]:focus,
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            width: 85%;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #sentence {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            min-height: 60px;
+            font-size: 18px;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .controls button {
+            width: 25%;
+            background-color: #007bff;
+            border: none;
+        }
+
+        .controls button:hover {
+            background-color: #0056b3;
+        }
+
+        #percentageLabel {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="range"] {
+            width: 80%;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="range"]:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Extract Text from File, PDF, or URL - Word by Word</h2>
+        <input type="file" id="fileInput" accept=".txt, .csv, .json, .html, .pdf">
+        <input type="text" id="urlInput" placeholder="Enter webpage URL">
+        <button onclick="fetchWebpage()">Fetch Text</button>
+        
+        <div id="sentence">Extracted text will appear here...</div>
+        
+        <div>
+            <input type="number" id="percentageInput" placeholder="Enter percentage" min="0" max="100" oninput="updatePercentageInput()" />
+            <button onclick="jumpToExactPercentage()">Jump to Percentage</button>
+        </div>
+        
+        <span id="percentageLabel">0%</span>
+
+        <div class="controls">
+            <button onclick="prevWord()">Previous Word</button>
+            <button onclick="nextWord()">Next Word</button>
+            <button onclick="saveWord()">Save Word</button>
+            <button onclick="downloadSavedWords()">Download Saved</button>
+        </div>
+    </div>
+
+    <script>
+        let text = "";
+        let words = [];
+        let currentWordIndex = 0;
+        let savedWords = [];
+
+        const proxyURL = "https://api.allorigins.win/raw?url="; // CORS proxy
+
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                if (file.name.endsWith(".html")) {
+                    processHTML(e.target.result);
+                } else if (file.name.endsWith(".pdf")) {
+                    processPDF(e.target.result);
+                } else {
+                    processText(e.target.result);
+                }
+            };
+            if (file.name.endsWith(".pdf")) {
+                reader.readAsArrayBuffer(file);
+            } else {
+                reader.readAsText(file);
+            }
+        });
+
+        async function fetchWebpage() {
+            let url = document.getElementById('urlInput').value;
+            if (!url) {
+                alert("Please enter a URL");
+                return;
+            }
+
+            try {
+                let response = await fetch(proxyURL + encodeURIComponent(url));
+                if (!response.ok) throw new Error("Proxy fetch failed.");
+                let text = await response.text();
+                processHTML(text);
+            } catch (error) {
+                console.warn("Failed to fetch webpage with proxy:", error);
+                alert("Failed to fetch webpage.");
+            }
+        }
+
+        function processHTML(htmlText) {
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(htmlText, "text/html");
+            let extractedText = doc.body.innerText;
+            processText(extractedText);
+        }
+
+        async function processPDF(pdfData) {
+            let pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
+            let extractedText = "";
+            for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                let page = await pdf.getPage(pageNum);
+                let textContent = await page.getTextContent();
+                extractedText += textContent.items.map(item => item.str).join(" ") + " ";
+            }
+            processText(extractedText);
+        }
+
+        function processText(extractedText) {
+            text = extractedText;
+            words = text.split(/\s+/); // Split the text into words
+            currentWordIndex = 0;
+            updatePercentageLabel();
+            displayWord();
+        }
+
+        function displayWord() {
+            if (words.length > 0 && currentWordIndex < words.length) {
+                document.getElementById('sentence').innerText = words[currentWordIndex];
+                updatePercentageLabel();
+            }
+        }
+
+        function nextWord() {
+            if (words.length > 0) {
+                currentWordIndex = (currentWordIndex + 1) % words.length;
+                displayWord();
+            }
+        }
+
+        function prevWord() {
+            if (words.length > 0) {
+                currentWordIndex = (currentWordIndex - 1 + words.length) % words.length;
+                displayWord();
+            }
+        }
+
+        function jumpToExactPercentage() {
+            let percentage = parseFloat(document.getElementById('percentageInput').value);
+            if (!isNaN(percentage) && percentage >= 0 && percentage <= 100) {
+                currentWordIndex = Math.floor((percentage / 100) * (words.length - 1));
+                displayWord();
+            } else {
+                alert("Please enter a valid percentage between 0 and 100.");
+            }
+        }
+
+        function updatePercentageLabel() {
+            if (words.length > 0) {
+                let percentage = Math.round((currentWordIndex / (words.length - 1)) * 100);
+                document.getElementById('percentageLabel').innerText = percentage + "%";
+            }
+        }
+
+        function saveWord() {
+            if (words.length > 0 && currentWordIndex >= 0) {
+                let word = words[currentWordIndex];
+                if (!savedWords.includes(word)) {
+                    savedWords.push(word);
+                }
+            }
+        }
+
+        function downloadSavedWords() {
+            let blob = new Blob([savedWords.join("\n")], { type: "text/plain" });
+            let link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "savedWords.txt";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
