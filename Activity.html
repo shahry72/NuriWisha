@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Tracker</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { margin: 20px auto; width: 80%; border-collapse: collapse; }
+        .time-slot { display: flex; justify-content: space-between; align-items: center; margin: 5px 0; border-bottom: 1px solid #ccc; padding: 5px; }
+        button { padding: 5px 10px; border: none; cursor: pointer; }
+        .green { background-color: green; color: white; }
+        .red { background-color: red; color: white; }
+        .activity-btn { background-color: lightblue; color: black; margin: 2px; }
+        .selected { background-color: darkblue; color: white; }
+    </style>
+</head>
+<body>
+    <h2>Activity Tracker</h2>
+    <label for="date">Select Date: </label>
+    <input type="date" id="date">
+    <button onclick="addNewDay()">Add New Day</button>
+    <div class="container" id="schedule"></div>
+    <h3>Total Score: <span id="totalScore">0</span></h3>
+    <button onclick="downloadExcel()">Download Excel</button>
+    <button onclick="resetData()">Reset Data</button>
+    <label for="removeDate">Remove Date: </label>
+    <input type="date" id="removeDate">
+    <button onclick="removeDate()">Remove</button>
+
+    <script>
+        let activities = JSON.parse(localStorage.getItem('activities')) || {};
+        let currentDate = new Date().toISOString().split('T')[0];
+        document.getElementById('date').value = currentDate;
+        
+        function formatTime(hour, minute) {
+            let period = hour >= 12 ? "PM" : "AM";
+            let formattedHour = hour % 12 || 12;
+            return `${formattedHour}:${minute} ${period}`;
+        }
+        
+        function generateTimeSlots() {
+            let schedule = document.getElementById("schedule");
+            schedule.innerHTML = "";
+            for (let i = 0; i < 32; i++) {
+                let hour = 7 + Math.floor(i / 2);
+                let minute = i % 2 === 0 ? "00" : "30";
+                let timeLabel = formatTime(hour, minute);
+                
+                let div = document.createElement("div");
+                div.classList.add("time-slot");
+                
+                div.innerHTML = `${timeLabel} 
+                    <button class='activity-btn' onclick='selectActivity(${i}, "Study", this)'>Study</button>
+                    <button class='activity-btn' onclick='selectActivity(${i}, "Help M", this)'>Help M</button>
+                    <button class='activity-btn' onclick='selectActivity(${i}, "Quran-Masjid", this)'>Quran-Masjid</button>
+                    <button class='activity-btn' onclick='selectActivity(${i}, "R-Book", this)'>R-Book</button>
+                    <button class='green' onclick='updateScore(1, ${i})'>✔</button> 
+                    <button class='red' onclick='updateScore(-1, ${i})'>✖</button>`;
+                schedule.appendChild(div);
+            }
+        }
+        
+        function selectActivity(index, activity, button) {
+            let date = document.getElementById('date').value;
+            if (!activities[date]) activities[date] = {};
+            activities[date][index] = { activity: activity, score: activities[date][index]?.score || 0 };
+            localStorage.setItem('activities', JSON.stringify(activities));
+            
+            let buttons = button.parentNode.querySelectorAll('.activity-btn');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+        }
+        
+        function updateScore(value, index) {
+            let date = document.getElementById('date').value;
+            if (!activities[date]) return;
+            if (!activities[date][index] || !activities[date][index].activity) return alert("Please select an activity first!");
+            
+            activities[date][index].score += value;
+            localStorage.setItem('activities', JSON.stringify(activities));
+            updateTotalScore();
+        }
+        
+        function updateTotalScore() {
+            let date = document.getElementById('date').value;
+            let totalScore = 0;
+            if (activities[date]) {
+                Object.values(activities[date]).forEach(entry => {
+                    totalScore += entry.score;
+                });
+            }
+            document.getElementById("totalScore").innerText = totalScore;
+        }
+        
+        function addNewDay() {
+            let date = document.getElementById('date').value;
+            if (!activities[date]) activities[date] = {};
+            updateTotalScore();
+            generateTimeSlots();
+        }
+        
+        function removeDate() {
+            let date = document.getElementById('removeDate').value;
+            if (activities[date]) {
+                delete activities[date];
+                localStorage.setItem('activities', JSON.stringify(activities));
+                alert("Date removed.");
+            }
+        }
+
+        function resetData() {
+            if (confirm("Are you sure you want to reset all data?")) {
+                localStorage.removeItem('activities');
+                activities = {};
+                document.getElementById("totalScore").innerText = "0";
+            }
+        }
+
+        function downloadExcel() {
+            let storedData = localStorage.getItem("excelData");
+            let data = storedData ? JSON.parse(storedData) : [];
+            for (let date in activities) {
+                for (let index in activities[date]) {
+                    let entry = activities[date][index];
+                    let hour = 7 + Math.floor(index / 2);
+                    let minute = index % 2 === 0 ? "00" : "30";
+                    data.push({
+                        Date: date,
+                        Time: formatTime(hour, minute),
+                        Activity: entry.activity,
+                        Score: entry.score
+                    });
+                }
+            }
+            localStorage.setItem("excelData", JSON.stringify(data));
+            let ws = XLSX.utils.json_to_sheet(data);
+            let wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Scores");
+            XLSX.writeFile(wb, "activity_scores.xlsx");
+        }
+        
+        generateTimeSlots();
+    </script>
+</body>
+</html>
