@@ -58,9 +58,28 @@
                     <button class='activity-btn' onclick='selectActivity(${i}, "Help M", this)'>Help M</button>
                     <button class='activity-btn' onclick='selectActivity(${i}, "Quran-Masjid", this)'>Quran-Masjid</button>
                     <button class='activity-btn' onclick='selectActivity(${i}, "R-Book", this)'>R-Book</button>
-                    <button class='green' onclick='updateScore(1, ${i})'>✔</button> 
-                    <button class='red' onclick='updateScore(-1, ${i})'>✖</button>`;
+                    <button class='green' onclick='updateScore(1, ${i}, this)'></button> 
+                    <button class='red' onclick='updateScore(-1, ${i}, this)'></button>`;
                 schedule.appendChild(div);
+            }
+        }
+        
+        function resetData() {
+            localStorage.removeItem('activities');
+            activities = {};
+            generateTimeSlots();
+            updateTotalScore();
+        }
+        
+        function removeDate() {
+            let date = document.getElementById('removeDate').value;
+            if (activities[date]) {
+                delete activities[date];
+                localStorage.setItem('activities', JSON.stringify(activities));
+                alert("Data for " + date + " has been removed.");
+                updateTotalScore();
+            } else {
+                alert("No data found for the selected date.");
             }
         }
         
@@ -85,7 +104,7 @@
             }
         }
         
-        function updateScore(value, index) {
+        function updateScore(value, index, button) {
             let date = document.getElementById('date').value;
             if (!activities[date]) return;
             if (!activities[date][index] || !activities[date][index].activity) return alert("Please select an activity first!");
@@ -93,6 +112,8 @@
             activities[date][index].score += value;
             localStorage.setItem('activities', JSON.stringify(activities));
             updateTotalScore();
+            
+            button.innerHTML = value > 0 ? '✔' : '✖';
         }
         
         function updateTotalScore() {
