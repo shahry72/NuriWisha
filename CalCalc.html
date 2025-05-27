@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة السعرات الحرارية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>حاسبة السعرات الحرارية</h1>
+
+    <label for="foodSelect">اختر طعامًا:</label>
+    <select id="foodSelect">
+        <option value="apple">تفاح</option>
+        <option value="banana">موز</option>
+        <option value="chicken_breast">صدر الدجاج</option>
+        <option value="broccoli">بروكلي</option>
+        <option value="carrot">جزر</option>
+        <option value="egg">بيض</option>
+        <option value="salmon">سلمون</option>
+        <option value="rice">أرز</option>
+        <option value="potato">بطاطس</option>
+        <option value="spinach">سبانخ</option>
+        <option value="tomato">طماطم</option>
+        <option value="beef">لحم بقري</option>
+        <option value="pasta">مكرونة</option>
+        <option value="orange">برتقال</option>
+        <option value="yogurt">زبادي</option>
+        <option value="almonds">لوز</option>
+        <option value="avocado">أفوكادو</option>
+        <option value="grapes">عنب</option>
+        <option value="strawberry">فراولة</option>
+        <option value="lettuce">خس</option>
+        <option value="cheese">جبن</option>
+        <option value="melon">بطيخ</option>
+        <option value="bread">خبز</option>
+        <option value="cucumber">خيار</option>
+        <option value="peanut_butter">زبدة الفول السوداني</option>
+        <option value="shrimp">روبيان</option>
+        <option value="blueberries">توت أزرق</option>
+        <option value="milk">حليب</option>
+        <option value="sweet_potato">بطاطا حلوة</option>
+        <option value="kiwi">كيوي</option>
+        <option value="pineapple">أناناس</option>
+        <option value="blackberries">توت أسود</option>
+        <option value="turkey">ديك رومي</option>
+        <option value="cabbage">كرنب</option>
+        <option value="honey">عسل</option>
+        <option value="bell_pepper">فلفل حلو</option>
+        <option value="oats">شوفان</option>
+        <option value="dark_chocolate">شوكولاتة داكنة</option>
+        <option value="quinoa">كينوا</option>
+        <option value="sweet_corn">ذرة حلوة</option>
+        <option value="cantaloupe">شمام</option>
+        <option value="cashews">كاجو</option>
+        <option value="kiwi">كيوي</option>
+        <option value="grilled_chicken">دجاج مشوي</option>
+        <option value="walnuts">جوز</option>
+        <option value="grapefruit">جريب فروت</option>
+        <option value="cottage_cheese">جبن قريش</option>
+        <option value="brussels_sprouts">بروكسل سبراوتس</option>
+        <option value="asparagus">أسبرجس</option>
+        <option value="peach">خوخ</option>
+        <option value="tofu">توفو</option>
+        <option value="green_tea">شاي أخضر</option>
+        <option value="raspberries">توت أحمر</option>
+        <option value="banana">موز</option>
+        <option value="carrot_soup">حساء الجزر</option>
+        <option value="salad">سلطة</option>
+        <option value="hummus">حمص</option>
+        <option value="papaya">بابايا</option>
+        <option value="bacon">لحم خنزير مدخن</option>
+        <option value="cucumber_soup">حساء الخيار</option>
+        <option value="pumpkin">قرع</option>
+        <option value="watermelon">بطيخ</option>
+        <option value="chickpeas">حمص</option>
+        <option value="beetroot">شمندر</option>
+        <option value="cereal">حبوب الإفطار</option>
+        <option value="pomegranate">رمان</option>
+        <option value="cauliflower">قرنبيط</option>
+        <option value="soy_milk">حليب الصويا</option>
+        <option value="crab">سلطة الكراب</option>
+        <option value="caviar">كافيار</option>
+        <option value="cod">سمك القد</option>
+        <option value="kale">كيل</option>
+        <option value="mango">مانجو</option>
+        <option value="lettuce_wraps">ورق الخس</option>
+        <option value="sunflower_seeds">بذور دوار الشمس</option>
+        <option value="pumpkin_seeds">بذور القرع</option>
+        <option value="corn_flakes">كورن فليكس</option>
+        <option value="figs">تين</option>
+        <option value="swordfish">سمك السيف</option>
+        <option value="green_beans">فاصوليا خضراء</option>
+        <option value="plum">برقوق</option>
+        <!-- Add more food items as needed -->
+    </select>
+
+    <label for="foodWeight">وزن الطعام (جرام):</label>
+    <input type="number" id="foodWeight" placeholder="أدخل وزن الطعام">
+
+    <button onclick="calculateCalories()">حساب السعرات الحرارية</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateCalories() {
+            // Food items with calorie content per gram
+            var foodList = {
+                "apple": 0.52,
+                "banana": 0.89,
+                "chicken_breast": 2.8,
+                "broccoli": 0.55,
+                "carrot": 0.41,
+                "egg": 1.55,
+                "salmon": 2.29,
+                "rice": 1.3,
+                "potato": 0.77,
+                "spinach": 0.23,
+                "tomato": 0.18,
+                "beef": 2.5,
+                "pasta": 1.75,
+                "orange": 0.43,
+                "yogurt": 0.59,
+                "almonds": 5.8,
+                "avocado": 1.6,
+                "grapes": 0.69,
+                "strawberry": 0.32,
+                "lettuce": 0.14,
+                "cheese": 4,
+                "melon": 0.34,
+                "bread": 2.5,
+                "cucumber": 0.16,
+                "peanut_butter": 5.85,
+                "shrimp": 1.1,
+                "blueberries": 0.57,
+                "milk": 0.52,
+                "sweet_potato": 0.86,
+                "kiwi": 0.61,
+                "pineapple": 0.5,
+                "blackberries": 0.49,
+                "turkey": 1.45,
+                "cabbage": 0.25,
+                "honey": 3.03,
+                "bell_pepper": 0.25,
+                "oats": 3.4,
+                "dark_chocolate": 5.7,
+                "quinoa": 3.41,
+                "sweet_corn": 0.86,
+                "cantaloupe": 0.34,
+                "cashews": 5.91,
+                "kiwi": 0.61,
+                "grilled_chicken": 2.5,
+                "walnuts": 6.71,
+                "grapefruit": 0.33,
+                "cottage_cheese": 0.98,
+                "brussels_sprouts": 0.43,
+                "asparagus": 0.27,
+                "peach": 0.39,
+                "tofu": 1.25,
+                "green_tea": 0.0,
+                "raspberries": 0.52,
+                "banana": 0.89,
+                "carrot_soup": 0.41,
+                "salad": 0.25,
+                "hummus": 1.04,
+                "papaya": 0.43,
+                "bacon": 5.48,
+                "cucumber_soup": 0.16,
+                "pumpkin": 0.26,
+                "watermelon": 0.3,
+                "chickpeas": 2.39,
+                "beetroot": 0.43,
+                "cereal": 3.59,
+                "pomegranate": 0.83,
+                "cauliflower": 0.25,
+                "soy_milk": 0.33,
+                "crab": 1.43,
+                "caviar": 2.9,
+                "cod": 0.96,
+                "kale": 0.49,
+                "mango": 0.6,
+                "lettuce_wraps": 0.23,
+                "sunflower_seeds": 5.99,
+                "pumpkin_seeds": 5.23,
+                "corn_flakes": 3.62,
+                "figs": 0.74,
+                "swordfish": 1.72,
+                "green_beans": 0.31,
+                "plum": 0.46
+                // Add more food items as needed
+            };
+
+            var foodSelect = document.getElementById("foodSelect");
+            var foodName = foodSelect.options[foodSelect.selectedIndex].value;
+            var foodWeight = parseFloat(document.getElementById("foodWeight").value);
+
+            // Find the specified food in the list
+            var specifiedFoodCalorie = foodList[foodName];
+
+            // Calculate and display the calories
+            if (specifiedFoodCalorie !== undefined && !isNaN(foodWeight) && foodWeight > 0) {
+                var totalCalories = specifiedFoodCalorie * foodWeight;
+                document.getElementById("result").innerText = "إجمالي السعرات الحرارية في " + foodWeight + " جرام من " + foodSelect.options[foodSelect.selectedIndex].text + " هو: " + totalCalories.toFixed(2) + " سعر حراري.";
+            } else {
+                document.getElementById("result").innerText = "إدخال غير صحيح. يرجى التحقق من القيم المدخلة.";
+            }
+        }
+    </script>
+</body>
+</html>
