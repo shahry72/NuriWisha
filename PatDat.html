@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Data Tracker with Editing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, textarea, button, select {
+            margin: 5px 0;
+            padding: 8px;
+            width: 100%;
+        }
+        .person {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 12px;
+        }
+        .edit-btn {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            cursor: pointer;
+            margin-left: 5px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Daily Data Tracker with Editing</h2>
+
+    <div>
+        <input type="text" id="nameInput" placeholder="Enter name">
+        <select id="entrySelect">
+            <option value="">Select entry to edit</option>
+        </select>
+        <textarea id="dataInput" placeholder="Enter data for today"></textarea>
+        <button onclick="addOrUpdatePerson()">Add / Update Data</button>
+    </div>
+
+    <h3>People</h3>
+    <div id="peopleContainer"></div>
+
+    <script>
+        let people = JSON.parse(localStorage.getItem('people')) || {};
+        let currentEdit = { name: null, index: null };
+
+        function saveToLocalStorage() {
+            localStorage.setItem('people', JSON.stringify(people));
+        }
+
+        function addOrUpdatePerson() {
+            const name = document.getElementById('nameInput').value.trim();
+            const data = document.getElementById('dataInput').value.trim();
+
+            if (!name || !data) {
+                alert("Please enter both name and data.");
+                return;
+            }
+
+            if (!people[name]) {
+                people[name] = [];
+            }
+
+            if (currentEdit.name !== null) {
+                // Update existing entry
+                people[currentEdit.name][currentEdit.index].data = data;
+                currentEdit = { name: null, index: null };
+                document.getElementById('entrySelect').value = "";
+            } else {
+                // Add new entry
+                const today = new Date().toLocaleDateString();
+                people[name].push({ date: today, data: data });
+            }
+
+            saveToLocalStorage();
+
+            document.getElementById('nameInput').value = '';
+            document.getElementById('dataInput').value = '';
+
+            renderPeople();
+        }
+
+        function deletePerson(name) {
+            if (confirm(`Are you sure you want to delete all data for ${name}?`)) {
+                delete people[name];
+                saveToLocalStorage();
+                renderPeople();
+            }
+        }
+
+        function editEntry(name, index) {
+            document.getElementById('nameInput').value = name;
+            document.getElementById('dataInput').value = people[name][index].data;
+
+            // Populate entry select for clarity
+            currentEdit = { name: name, index: index };
+            document.getElementById('entrySelect').value = index;
+        }
+
+        function renderPeople() {
+            const container = document.getElementById('peopleContainer');
+            const select = document.getElementById('entrySelect');
+            container.innerHTML = '';
+            select.innerHTML = '<option value="">Select entry to edit</option>';
+
+            for (const name in people) {
+                const personDiv = document.createElement('div');
+                personDiv.classList.add('person');
+
+                let html = `<h4>${name} <button class="delete-btn" onclick="deletePerson('${name}')">Delete Person</button></h4>`;
+                html += '<ul>';
+                people[name].forEach((entry, index) => {
+                    html += `<li><strong>${entry.date}:</strong> ${entry.data} 
+                             <button class="edit-btn" onclick="editEntry('${name}', ${index})">Edit</button></li>`;
+                    // Add to select dropdown
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.text = `${name} - ${entry.date}`;
+                    select.appendChild(option);
+                });
+                html += '</ul>';
+
+                personDiv.innerHTML = html;
+                container.appendChild(personDiv);
+            }
+        }
+
+        // Render people on page load
+        renderPeople();
+    </script>
+</body>
+</html>
