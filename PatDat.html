@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Data Tracker with Editing</title>
+    <title>Daily Data Tracker with Name Selection</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -40,13 +40,17 @@
     </style>
 </head>
 <body>
-    <h2>Daily Data Tracker with Editing</h2>
+    <h2>Daily Data Tracker with Name Selection</h2>
 
     <div>
-        <input type="text" id="nameInput" placeholder="Enter name">
+        <label for="nameSelect">Select Name (or type new):</label>
+        <input list="nameOptions" id="nameInput" placeholder="Type or choose name">
+        <datalist id="nameOptions"></datalist>
+
         <select id="entrySelect">
             <option value="">Select entry to edit</option>
         </select>
+
         <textarea id="dataInput" placeholder="Enter data for today"></textarea>
         <button onclick="addOrUpdatePerson()">Add / Update Data</button>
     </div>
@@ -60,6 +64,16 @@
 
         function saveToLocalStorage() {
             localStorage.setItem('people', JSON.stringify(people));
+        }
+
+        function updateNameOptions() {
+            const datalist = document.getElementById('nameOptions');
+            datalist.innerHTML = '';
+            for (const name in people) {
+                const option = document.createElement('option');
+                option.value = name;
+                datalist.appendChild(option);
+            }
         }
 
         function addOrUpdatePerson() {
@@ -87,6 +101,7 @@
             }
 
             saveToLocalStorage();
+            updateNameOptions();
 
             document.getElementById('nameInput').value = '';
             document.getElementById('dataInput').value = '';
@@ -98,6 +113,7 @@
             if (confirm(`Are you sure you want to delete all data for ${name}?`)) {
                 delete people[name];
                 saveToLocalStorage();
+                updateNameOptions();
                 renderPeople();
             }
         }
@@ -106,7 +122,6 @@
             document.getElementById('nameInput').value = name;
             document.getElementById('dataInput').value = people[name][index].data;
 
-            // Populate entry select for clarity
             currentEdit = { name: name, index: index };
             document.getElementById('entrySelect').value = index;
         }
@@ -126,6 +141,7 @@
                 people[name].forEach((entry, index) => {
                     html += `<li><strong>${entry.date}:</strong> ${entry.data} 
                              <button class="edit-btn" onclick="editEntry('${name}', ${index})">Edit</button></li>`;
+
                     // Add to select dropdown
                     const option = document.createElement('option');
                     option.value = index;
@@ -139,7 +155,8 @@
             }
         }
 
-        // Render people on page load
+        // Initialize page
+        updateNameOptions();
         renderPeople();
     </script>
 </body>
