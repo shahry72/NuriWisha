@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Participation Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f7f6;
+      color: #333;
+    }
+    h1, h2 { color: #2c3e50; }
+    .card {
+      background: white;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      align-items: center;
+    }
+    input[type="text"], input[type="number"] {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 80%;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover { background-color: #2980b9; }
+    button.btn-danger { background-color: #e74c3c; }
+    button.btn-danger:hover { background-color: #c0392b; }
+    button.btn-clear { background-color: #7f8c8d; }
+    button.btn-clear:hover { background-color: #95a5a6; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    th { background-color: #34495e; color: white; }
+    tr:nth-child(even) { background-color: #f9f9f9; }
+    .counter-btn {
+      width: 26px;
+      height: 26px;
+      padding: 0;
+      font-weight: bold;
+      border-radius: 50%;
+    }
+    .counter-val {
+      display: inline-block;
+      min-width: 20px;
+      font-weight: bold;
+    }
+    .score-cell {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #27ae60;
+    }
+    .status-msg {
+      font-size: 0.85em;
+      color: #27ae60;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Student Participation Tracker</h1>
+
+  <!-- Scoring Rules Panel -->
+  <div class="card">
+    <h2>1. Set Point Weights</h2>
+    <div class="grid-container">
+      <div>
+        <label>Presentation:</label><br>
+        <input type="number" id="weight-presentation" value="5" onchange="saveWeights(); updateAllScores();">
+      </div>
+      <div>
+        <label>Answer Qs:</label><br>
+        <input type="number" id="weight-answer" value="2" onchange="saveWeights(); updateAllScores();">
+      </div>
+      <div>
+        <label>Comment:</label><br>
+        <input type="number" id="weight-comment" value="1" onchange="saveWeights(); updateAllScores();">
+      </div>
+      <div>
+        <label>Likes (👍):</label><br>
+        <input type="number" id="weight-like" value="1" onchange="saveWeights(); updateAllScores();">
+      </div>
+      <div>
+        <label>Prizes:</label><br>
+        <input type="number" id="weight-prize" value="3" onchange="saveWeights(); updateAllScores();">
+      </div>
+      <div>
+        <label>Fails (Deduct):</label><br>
+        <input type="number" id="weight-fail" value="-2" onchange="saveWeights(); updateAllScores();">
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Student Form -->
+  <div class="card">
+    <h2>2. Add New Student</h2>
+    <input type="text" id="student-name-input" placeholder="Enter student full name" style="width: 250px;">
+    <button onclick="addStudent()">Add Student</button>
+  </div>
+
+  <!-- Participation Table -->
+  <div class="card">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h2>3. Participation Log & Final Marks</h2>
+      <div>
+        <span id="save-status" class="status-msg"></span>
+        <button class="btn-clear" onclick="clearAllData()">Reset All Data</button>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Presentations</th>
+          <th>Answers</th>
+          <th>Comments</th>
+          <th>Likes (👍)</th>
+          <th>Prizes</th>
+          <th>Fails</th>
+          <th>Total Count</th>
+          <th>Final Mark</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="student-table-body">
+        <!-- Dynamic rows added here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    let students = [];
+
+    // --- Local Storage Functions ---
+    function saveData() {
+      localStorage.setItem('tracker_students', JSON.stringify(students));
+      showSaveStatus();
+    }
+
+    function saveWeights() {
+      const weights = {
+        presentation: document.getElementById('weight-presentation').value,
+        answer: document.getElementById('weight-answer').value,
+        comment: document.getElementById('weight-comment').value,
+        like: document.getElementById('weight-like').value,
+        prize: document.getElementById('weight-prize').value,
+        fail: document.getElementById('weight-fail').value
+      };
+      localStorage.setItem('tracker_weights', JSON.stringify(weights));
+      showSaveStatus();
+    }
+
+    function loadData() {
+      const savedStudents = localStorage.getItem('tracker_students');
+      if (savedStudents) {
+        students = JSON.parse(savedStudents);
+      }
+
+      const savedWeights = localStorage.getItem('tracker_weights');
+      if (savedWeights) {
+        const weights = JSON.parse(savedWeights);
+        document.getElementById('weight-presentation').value = weights.presentation ?? 5;
+        document.getElementById('weight-answer').value = weights.answer ?? 2;
+        document.getElementById('weight-comment').value = weights.comment ?? 1;
+        document.getElementById('weight-like').value = weights.like ?? 1;
+        document.getElementById('weight-prize').value = weights.prize ?? 3;
+        document.getElementById('weight-fail').value = weights.fail ?? -2;
+      }
+    }
+
+    function showSaveStatus() {
+      const status = document.getElementById('save-status');
+      status.textContent = 'Saved!';
+      setTimeout(() => { status.textContent = ''; }, 1500);
+    }
+
+    function clearAllData() {
+      if (confirm('Are you sure you want to clear all student records and data?')) {
+        localStorage.removeItem('tracker_students');
+        localStorage.removeItem('tracker_weights');
+        students = [];
+        renderTable();
+      }
+    }
+
+    // --- App Logic ---
+    function addStudent() {
+      const nameInput = document.getElementById('student-name-input');
+      const name = nameInput.value.trim();
+      
+      if (!name) {
+        alert('Please enter a valid name.');
+        return;
+      }
+
+      const newStudent = {
+        id: Date.now(),
+        name: name,
+        presentation: 0,
+        answer: 0,
+        comment: 0,
+        like: 0,
+        prize: 0,
+        fail: 0
+      };
+
+      students.push(newStudent);
+      nameInput.value = '';
+      saveData();
+      renderTable();
+    }
+
+    function changeCount(id, field, delta) {
+      const student = students.find(s => s.id === id);
+      if (student) {
+        student[field] = Math.max(0, (student[field] || 0) + delta);
+        saveData();
+        renderTable();
+      }
+    }
+
+    function deleteStudent(id) {
+      students = students.filter(s => s.id !== id);
+      saveData();
+      renderTable();
+    }
+
+    function calculateMark(student) {
+      const wPresentation = parseFloat(document.getElementById('weight-presentation').value) || 0;
+      const wAnswer = parseFloat(document.getElementById('weight-answer').value) || 0;
+      const wComment = parseFloat(document.getElementById('weight-comment').value) || 0;
+      const wLike = parseFloat(document.getElementById('weight-like').value) || 0;
+      const wPrize = parseFloat(document.getElementById('weight-prize').value) || 0;
+      const wFail = parseFloat(document.getElementById('weight-fail').value) || 0;
+
+      const score = (student.presentation * wPresentation) +
+                    (student.answer * wAnswer) +
+                    (student.comment * wComment) +
+                    ((student.like || 0) * wLike) +
+                    (student.prize * wPrize) +
+                    (student.fail * wFail);
+
+      return score;
+    }
+
+    function updateAllScores() {
+      renderTable();
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('student-table-body');
+      tbody.innerHTML = '';
+
+      if (students.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="10" style="color: #777;">No students added yet.</td></tr>`;
+        return;
+      }
+
+      students.forEach(student => {
+        const likes = student.like || 0;
+        const totalCount = student.presentation + student.answer + student.comment + likes + student.prize + student.fail;
+        const finalMark = calculateMark(student);
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td><strong>${student.name}</strong></td>
+          
+          <td>
+            <button class="counter-btn btn-danger" onclick="changeCount(${student.id}, 'presentation', -1)">-</button>
+            <span class="counter-val">${student.presentation}</span>
+            <button class="counter-btn" onclick="changeCount(${student.id}, 'presentation', 1)">+</button>
+          </td>
+
+          <td>
+            <button class="counter-btn btn-danger" onclick="changeCount(${student.id}, 'answer', -1)">-</button>
+            <span class="counter-val">${student.answer}</span>
+            <button class="counter-btn" onclick="changeCount(${student.id}, 'answer', 1)">+</button>
+          </td>
+
+          <td>
+            <button class="counter-btn btn-danger" onclick="changeCount(${student.id}, 'comment', -1)">-</button>
+            <span class="counter-val">${student.comment}</span>
+            <button class="counter-btn" onclick="changeCount(${student.id}, 'comment', 1)">+</button>
+          </td>
+
+          <td>
+            <button class="counter-btn btn-danger" onclick="changeCount(${student.id}, 'like', -1)">-</button>
+            <span class="counter-val">${likes}</span>
+            <button class="counter-btn" onclick="changeCount(${student.id}, 'like', 1)">+</button>
+          </td>
+
+          <td>
+            <button class="counter-btn btn-danger" onclick="changeCount(${student.id}, 'prize', -1)">-</button>
+            <span class="counter-val">${student.prize}</span>
+            <button class="counter-btn" onclick="changeCount(${student.id}, 'prize', 1)">+</button>
+          </td>
+
+          <td>
+            <button class="counter-btn btn-danger" onclick="changeCount(${student.id}, 'fail', -1)">-</button>
+            <span class="counter-val">${student.fail}</span>
+            <button class="counter-btn" onclick="changeCount(${student.id}, 'fail', 1)">+</button>
+          </td>
+
+          <td>${totalCount}</td>
+          <td class="score-cell">${finalMark}</td>
+          <td>
+            <button class="btn-danger" onclick="deleteStudent(${student.id})">Remove</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    // Initialize application and load stored data
+    loadData();
+    renderTable();
+  </script>
+</body>
+</html>
